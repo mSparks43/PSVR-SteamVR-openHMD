@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC   -shared -Wl,-soname,driver_openhmd.so -o bin/linux64/driver_openhmd.so CMakeFiles/driver_openhmd.dir/driverlog.cpp.o CMakeFiles/driver_openhmd.dir/driver_openhmd.cpp.o -Wl,-rpath,/media/storage/openhmd/SteamVR-OpenHMD/build/subprojects/openhmd -ldl subprojects/openhmd/libopenhmd.so.0.1.0 -lhidapi-libusb -lrt -lpthread 

@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../subprojects/openhmd/include/openhmd.h
+
+/media/storage/openhmd/SteamVR-OpenHMD/subprojects/openhmd/examples/simple/simple.c
+openhmd.h
+-
+assert.h
+-
+stdio.h
+-
+stdlib.h
+-
+

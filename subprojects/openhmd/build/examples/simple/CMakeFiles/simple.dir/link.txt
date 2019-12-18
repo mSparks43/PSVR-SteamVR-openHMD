@@ -1,0 +1,1 @@
+/usr/bin/cc -std=c99  -rdynamic CMakeFiles/simple.dir/simple.c.o  -o simple  -L/media/storage/openhmd/SteamVR-OpenHMD/subprojects/openhmd/build -Wl,-rpath,/media/storage/openhmd/SteamVR-OpenHMD/subprojects/openhmd/build -lopenhmd -lm 

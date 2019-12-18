@@ -1,0 +1,50 @@
+{
+   "DesktopUI" : {
+      "pairing" : "560,240,799,599,0"
+   },
+   "GpuSpeed" : {
+      "gpuSpeed0" : 526,
+      "gpuSpeed1" : 467,
+      "gpuSpeed2" : 435,
+      "gpuSpeed3" : 343,
+      "gpuSpeed4" : 315,
+      "gpuSpeed5" : 441,
+      "gpuSpeed6" : 455,
+      "gpuSpeed7" : 477,
+      "gpuSpeed8" : 482,
+      "gpuSpeed9" : 433,
+      "gpuSpeedCount" : 10,
+      "gpuSpeedDriver" : "1803780096",
+      "gpuSpeedHorsepower" : 451,
+      "gpuSpeedRenderTargetScale" : 1.5,
+      "gpuSpeedVendor" : "GeForce GTX 1070",
+      "gpuSpeedVersion" : 2
+   },
+   "LastKnown" : {
+      "HMDModel" : "OpenHMD: HMD Null Device"
+   },
+   "driver_lighthouse" : {
+      "enable" : false
+   },
+   "driver_oculus" : {
+      "enable" : false
+   },
+   "driver_oculus_legacy" : {
+      "enable" : false
+   },
+   "openvr.tool.steamvr_environments" : {
+      "gamepad_250820_AutosaveURL" : "vr-input-workshop://1822594772",
+      "gamepad_250820_CurrentURL" : "vr-input-workshop://1822596299"
+   },
+   "steamvr" : {
+      "debugInputBinding" : true,
+      "installID" : "1828873205982369307",
+      "lastVersionNotice" : "1.8.9",
+      "lastVersionNoticeDate" : "1570244519",
+      "mirrorViewEye" : 0,
+      "mirrorViewGeometry" : "2206 156 1272 667",
+      "showMirrorView" : false,
+      "supersampleManualOverride" : true,
+      "supersampleScale" : 1.5
+   }
+}

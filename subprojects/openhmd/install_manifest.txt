@@ -1,0 +1,5 @@
+/usr/local/lib/libopenhmd.so.0.1.0
+/usr/local/lib/libopenhmd.so.0
+/usr/local/lib/libopenhmd.so
+/usr/local/lib/libopenhmd.a
+/usr/local/include/openhmd.h
