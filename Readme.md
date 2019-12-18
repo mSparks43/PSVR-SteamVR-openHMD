@@ -1,7 +1,9 @@
 # SteamVR Plugin for OpenHMD Drivers
 Modified version of https://github.com/ChristophHaag/SteamVR-OpenHMD
-with updated openHMD and some pull requests for PSVR, otherwise building should be the same
-use cmake3 rather than cmake on RH/CentOS builds, cmake defaults to version to and this uses version 3 which is a different command.
+
+  Updated openHMD and some pull requests for PSVR, otherwise building should be the same
+
+  use cmake3 rather than cmake on RH/CentOS builds, cmake defaults to version 2 and this uses version 3 which is a different command on RH/CentOS.
 
 # Status/TODO
 
