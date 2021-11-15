@@ -1,23 +1,20 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "CXX"
   )
-# The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_CXX
-  "/media/storage/openhmd/SteamVR-OpenHMD/driver_openhmd.cpp" "/media/storage/openhmd/SteamVR-OpenHMD/build/CMakeFiles/driver_openhmd.dir/driver_openhmd.cpp.o"
-  "/media/storage/openhmd/SteamVR-OpenHMD/driverlog.cpp" "/media/storage/openhmd/SteamVR-OpenHMD/build/CMakeFiles/driver_openhmd.dir/driverlog.cpp.o"
-  )
-set(CMAKE_CXX_COMPILER_ID "GNU")
 
-# The include file search paths:
-set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "../subprojects/openhmd/include"
-  "../subprojects/openvr"
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/msparks/Development/PSVR-SteamVR-openHMD/driver_openhmd.cpp" "CMakeFiles/driver_openhmd.dir/driver_openhmd.cpp.o" "gcc" "CMakeFiles/driver_openhmd.dir/driver_openhmd.cpp.o.d"
+  "/home/msparks/Development/PSVR-SteamVR-openHMD/driverlog.cpp" "CMakeFiles/driver_openhmd.dir/driverlog.cpp.o" "gcc" "CMakeFiles/driver_openhmd.dir/driverlog.cpp.o.d"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/media/storage/openhmd/SteamVR-OpenHMD/build/subprojects/openhmd/CMakeFiles/openhmd-shared.dir/DependInfo.cmake"
+  "/home/msparks/Development/PSVR-SteamVR-openHMD/build/subprojects/openhmd/CMakeFiles/openhmd-shared.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

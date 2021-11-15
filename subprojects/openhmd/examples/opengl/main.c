@@ -198,7 +198,7 @@ int main(int argc, char** argv)
 		ohmd_ctx_update(ctx);
 
 		SDL_Event event;
-		while(SDL_PollEvent(&event)){
+		/*while(SDL_PollEvent(&event)){
 			if(event.type == SDL_KEYDOWN){
 				switch(event.key.keysym.sym){
 				case SDLK_ESCAPE:
@@ -268,7 +268,7 @@ int main(int argc, char** argv)
 					ohmd_device_setf(hmd, OHMD_EYE_IPD, &ipd);
 					break;
 				case SDLK_d:
-					/* toggle between distorted and undistorted views */
+					// toggle between distorted and undistorted views 
 					if ((distortion_coeffs[0] != 0.0) ||
 							(distortion_coeffs[1] != 0.0) ||
 							(distortion_coeffs[2] != 0.0) ||
@@ -288,7 +288,7 @@ int main(int argc, char** argv)
 					break;
 				}
 			}
-		}
+		}*/
 
 		// Common scene state
 		glEnable(GL_BLEND);

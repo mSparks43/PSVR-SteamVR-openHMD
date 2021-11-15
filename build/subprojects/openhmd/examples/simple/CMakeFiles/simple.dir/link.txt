@@ -1,1 +1,1 @@
-/usr/bin/cc -std=c99  -rdynamic CMakeFiles/simple.dir/simple.c.o  -o simple  -L/media/storage/openhmd/SteamVR-OpenHMD/build -Wl,-rpath,/media/storage/openhmd/SteamVR-OpenHMD/build -lopenhmd -lm 
+/usr/bin/cc -std=c99 -rdynamic CMakeFiles/simple.dir/simple.c.o -o simple   -L/home/msparks/Development/PSVR-SteamVR-openHMD/build  -Wl,-rpath,/home/msparks/Development/PSVR-SteamVR-openHMD/build -lopenhmd -lm 

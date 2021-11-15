@@ -16,13 +16,13 @@ string
 vector
 -
 
-/media/storage/openhmd/SteamVR-OpenHMD/driver_openhmd.cpp
+/home/msparks/Development/PSVR-SteamVR-openHMD/driver_openhmd.cpp
 ohmd_config.h
-/media/storage/openhmd/SteamVR-OpenHMD/ohmd_config.h
+/home/msparks/Development/PSVR-SteamVR-openHMD/ohmd_config.h
 openvr_driver.h
 -
 driverlog.h
-/media/storage/openhmd/SteamVR-OpenHMD/driverlog.h
+/home/msparks/Development/PSVR-SteamVR-openHMD/driverlog.h
 vector
 -
 thread
@@ -40,21 +40,21 @@ math.h
 stdio.h
 -
 
-/media/storage/openhmd/SteamVR-OpenHMD/driverlog.cpp
+/home/msparks/Development/PSVR-SteamVR-openHMD/driverlog.cpp
 driverlog.h
-/media/storage/openhmd/SteamVR-OpenHMD/driverlog.h
+/home/msparks/Development/PSVR-SteamVR-openHMD/driverlog.h
 stdio.h
 -
 stdarg.h
 -
 
-/media/storage/openhmd/SteamVR-OpenHMD/driverlog.h
+/home/msparks/Development/PSVR-SteamVR-openHMD/driverlog.h
 string
 -
 openvr_driver.h
 -
 
-/media/storage/openhmd/SteamVR-OpenHMD/ohmd_config.h
+/home/msparks/Development/PSVR-SteamVR-openHMD/ohmd_config.h
 stdlib.h
 -
 stdio.h
@@ -62,5 +62,5 @@ stdio.h
 string.h
 -
 driverlog.h
-/media/storage/openhmd/SteamVR-OpenHMD/driverlog.h
+/home/msparks/Development/PSVR-SteamVR-openHMD/driverlog.h
 

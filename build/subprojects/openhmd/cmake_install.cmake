@@ -1,4 +1,4 @@
-# Install script for directory: /media/storage/openhmd/SteamVR-OpenHMD/subprojects/openhmd
+# Install script for directory: /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -37,6 +37,11 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
+# Set default install directory permissions.
+if(NOT DEFINED CMAKE_OBJDUMP)
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
+endif()
+
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   foreach(file
       "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libopenhmd.so.0.1.0"
@@ -50,8 +55,8 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     endif()
   endforeach()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES
-    "/media/storage/openhmd/SteamVR-OpenHMD/build/subprojects/openhmd/libopenhmd.so.0.1.0"
-    "/media/storage/openhmd/SteamVR-OpenHMD/build/subprojects/openhmd/libopenhmd.so.0"
+    "/home/msparks/Development/PSVR-SteamVR-openHMD/build/subprojects/openhmd/libopenhmd.so.0.1.0"
+    "/home/msparks/Development/PSVR-SteamVR-openHMD/build/subprojects/openhmd/libopenhmd.so.0"
     )
   foreach(file
       "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libopenhmd.so.0.1.0"
@@ -73,7 +78,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libopenhmd.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/media/storage/openhmd/SteamVR-OpenHMD/build/subprojects/openhmd/libopenhmd.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/msparks/Development/PSVR-SteamVR-openHMD/build/subprojects/openhmd/libopenhmd.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libopenhmd.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libopenhmd.so")
     if(CMAKE_INSTALL_DO_STRIP)
@@ -83,16 +88,16 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/media/storage/openhmd/SteamVR-OpenHMD/build/subprojects/openhmd/libopenhmd.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/home/msparks/Development/PSVR-SteamVR-openHMD/build/subprojects/openhmd/libopenhmd.a")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES "/media/storage/openhmd/SteamVR-OpenHMD/subprojects/openhmd/include/openhmd.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES "/home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/include/openhmd.h")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/media/storage/openhmd/SteamVR-OpenHMD/build/subprojects/openhmd/examples/simple/cmake_install.cmake")
+  include("/home/msparks/Development/PSVR-SteamVR-openHMD/build/subprojects/openhmd/examples/simple/cmake_install.cmake")
 
 endif()
 

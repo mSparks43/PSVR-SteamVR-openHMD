@@ -31,6 +31,10 @@ OHMD_APIENTRYDLL ohmd_context* OHMD_APIENTRY ohmd_ctx_create(void)
 	ctx->drivers[ctx->num_drivers++] = ohmd_create_oculus_rift_drv(ctx);
 #endif
 
+#if DRIVER_OCULUS_RIFT_S
+	ctx->drivers[ctx->num_drivers++] = ohmd_create_oculus_rift_s_drv(ctx);
+#endif
+
 #if DRIVER_DEEPOON
 	ctx->drivers[ctx->num_drivers++] = ohmd_create_deepoon_drv(ctx);
 #endif
@@ -53,6 +57,10 @@ OHMD_APIENTRYDLL ohmd_context* OHMD_APIENTRY ohmd_ctx_create(void)
 
 #if DRIVER_XGVR
 	ctx->drivers[ctx->num_drivers++] = ohmd_create_xgvr_drv(ctx);
+#endif
+
+#if DRIVER_VRTEK
+	ctx->drivers[ctx->num_drivers++] = ohmd_create_vrtek_drv(ctx);
 #endif
 
 #if DRIVER_ANDROID
@@ -283,24 +291,22 @@ static int ohmd_device_getf_unp(ohmd_device* device, ohmd_float_value type, floa
 {
 	switch(type){
 	case OHMD_LEFT_EYE_GL_MODELVIEW_MATRIX: {
-			vec3f point = {{0, 0, 0}};
 			quatf rot = device->rotation;
 			oquatf_mult_me(&rot, &device->rotation_correction);
-			mat4x4f orient, world_shift, result;
-			omat4x4f_init_look_at(&orient, &rot, &point);
-			omat4x4f_init_translate(&world_shift, -device->position.x +(device->properties.ipd / 2.0f), -device->position.y, -device->position.z);
-			omat4x4f_mult(&orient, &world_shift, &result);
+			mat4x4f central_view, eye_shift, result;
+			omat4x4f_init_look_at(&central_view, &rot, &device->position);
+			omat4x4f_init_translate(&eye_shift, +(device->properties.ipd / 2.0f), 0.0f, 0.0f);
+			omat4x4f_mult(&eye_shift, &central_view, &result);
 			omat4x4f_transpose(&result, (mat4x4f*)out);
 			return OHMD_S_OK;
 		}
 	case OHMD_RIGHT_EYE_GL_MODELVIEW_MATRIX: {
-			vec3f point = {{0, 0, 0}};
 			quatf rot = device->rotation;
 			oquatf_mult_me(&rot, &device->rotation_correction);
-			mat4x4f orient, world_shift, result;
-			omat4x4f_init_look_at(&orient, &rot, &point);
-			omat4x4f_init_translate(&world_shift, -device->position.x + -(device->properties.ipd / 2.0f), -device->position.y, -device->position.z);
-			omat4x4f_mult(&orient, &world_shift, &result);
+			mat4x4f central_view, eye_shift, result;
+			omat4x4f_init_look_at(&central_view, &rot, &device->position);
+			omat4x4f_init_translate(&eye_shift, -(device->properties.ipd / 2.0f), 0.0f, 0.0f);
+			omat4x4f_mult(&eye_shift, &central_view, &result);
 			omat4x4f_transpose(&result, (mat4x4f*)out);
 			return OHMD_S_OK;
 		}
@@ -386,7 +392,7 @@ OHMD_APIENTRYDLL int OHMD_APIENTRY ohmd_device_getf(ohmd_device* device, ohmd_fl
 	return ret;
 }
 
-int ohmd_device_setf_unp(ohmd_device* device, ohmd_float_value type, const float* in)
+static int ohmd_device_setf_unp(ohmd_device* device, ohmd_float_value type, const float* in)
 {
 	switch(type){
 	case OHMD_EYE_IPD:
@@ -484,7 +490,7 @@ OHMD_APIENTRYDLL int OHMD_APIENTRY ohmd_device_seti(ohmd_device* device, ohmd_in
 }
 
 
-int ohmd_device_set_data_unp(ohmd_device* device, ohmd_data_value type, const void* in)
+static int ohmd_device_set_data_unp(ohmd_device* device, ohmd_data_value type, const void* in)
 {
     switch(type){
     case OHMD_DRIVER_DATA:

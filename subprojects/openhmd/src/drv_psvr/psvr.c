@@ -39,14 +39,14 @@ typedef struct {
 
 } psvr_priv;
 
-void accel_from_psvr_vec(const int16_t* smp, vec3f* out_vec)
+static void accel_from_psvr_vec(const int16_t* smp, vec3f* out_vec)
 {
 	out_vec->x = (float)smp[1] *  (9.81 / 16384);
 	out_vec->y = (float)smp[0] *  (9.81 / 16384);
 	out_vec->z = (float)smp[2] * -(9.81 / 16384);
 }
 
-void gyro_from_psvr_vec(const int16_t* smp, vec3f* out_vec)
+static void gyro_from_psvr_vec(const int16_t* smp, vec3f* out_vec)
 {
 	out_vec->x = (float)smp[1] * 0.00105f;
 	out_vec->y = (float)smp[0] * 0.00105f;
@@ -307,20 +307,29 @@ static ohmd_device* open_device(ohmd_driver* driver, ohmd_device_desc* desc)
     priv->base.properties.universal_distortion_k[1]= 0.090000;
     priv->base.properties.universal_distortion_k[2]=-0.060000;
     priv->base.properties.universal_distortion_k[3]= 0.770000;
+	/*priv->base.properties.universal_distortion_k[0]= 0.75;
+    priv->base.properties.universal_distortion_k[1]= -0.01f;
+    priv->base.properties.universal_distortion_k[2]= 0.75f;
+    priv->base.properties.universal_distortion_k[3]= 0.0f;
+	priv->base.properties.universal_distortion_k[4]= 3.8f;*/
+	priv->base.properties.universal_aberration_k[0] = 0.999f;
+	priv->base.properties.universal_aberration_k[1] = 1.008f;
+	priv->base.properties.universal_aberration_k[2] = 1.018f;
 	// Set device properties TODO: Get from device
-	priv->base.properties.hsize = 0.126; //from calculated specs
-	priv->base.properties.vsize = 0.071; //from calculated specs
+	priv->base.properties.hsize = 0.13f;//0.126; //from calculated specs
+	priv->base.properties.vsize = 0.07f;//0.071; //from calculated specs
 	priv->base.properties.hres = 1920;
 	priv->base.properties.vres = 1080;
 
 	// Measurements taken from
 	// https://github.com/gusmanb/PSVRFramework/wiki/Optical-characteristics
-	priv->base.properties.lens_sep = 0.0630999878f;
-	priv->base.properties.lens_vpos = 0.0394899882f;
+	priv->base.properties.lens_sep =  0.13f / 2.0f;//0.0630999878f;
+	priv->base.properties.lens_vpos =0.07f / 2.0f;// 0.0394899882f;
 
-	priv->base.properties.fov = DEG_TO_RAD(110.57f); //DEG_TO_RAD(103.57f); //TODO: Confirm exact mesurements
-	priv->base.properties.ratio = (1920.0f / 1080.0f) / 2.0f;
-
+	//priv->base.properties.fov = DEG_TO_RAD(110.57f); //DEG_TO_RAD(103.57f); //TODO: Confirm exact mesurements
+	priv->base.properties.fov = DEG_TO_RAD(115.57f); //DEG_TO_RAD(103.57f); //TODO: Confirm exact mesurements
+	//priv->base.properties.ratio = (1920.0f / 1080.0f) / 2.0f;
+	priv->base.properties.ratio = ((1920.0f/ 2.0f) / 1080.0f) ;
 	priv->base.properties.control_count = 3;
 	priv->base.properties.controls_hints[0] = OHMD_VOLUME_PLUS;
 	priv->base.properties.controls_hints[1] = OHMD_VOLUME_MINUS;
