@@ -1,27 +1,32 @@
 {
    "DesktopUI" : {
-      "controllerbinding_desktop" : "0,35,1918,1046,0",
       "pairing" : "560,240,799,599,0",
-      "settings_desktop" : "2405,200,907,680,1"
+      "settings_desktop" : "560,336,799,599,0"
    },
    "GpuSpeed" : {
-      "gpuSpeed0" : 1425,
-      "gpuSpeed1" : 1422,
-      "gpuSpeed2" : 1422,
-      "gpuSpeedCount" : 3,
-      "gpuSpeedDriver" : "1972535296",
-      "gpuSpeedHorsepower" : 1423,
+      "gpuSpeed0" : 1380,
+      "gpuSpeed1" : 1327,
+      "gpuSpeed2" : 1350,
+      "gpuSpeed3" : 1349,
+      "gpuSpeed4" : 1348,
+      "gpuSpeedCount" : 5,
+      "gpuSpeedDriver" : "2202993344",
+      "gpuSpeedHorsepower" : 1350,
       "gpuSpeedRenderTargetScale" : 1.5,
       "gpuSpeedVendor" : "NVIDIA GeForce RTX 3070",
       "gpuSpeedVersion" : 2
    },
    "LastKnown" : {
+      "HMDManufacturer" : "SNY",
       "HMDModel" : "OpenHMD: PSVR"
    },
    "driver_gamepad" : {
-      "blocked_by_safe_mode" : true
+      "enable" : false
    },
    "driver_lighthouse" : {
+      "enable" : false
+   },
+   "driver_monado" : {
       "enable" : false
    },
    "driver_oculus" : {
@@ -31,48 +36,14 @@
       "enable" : false
    },
    "driver_openhmd" : {
-      "blocked_by_safe_mode" : false,
       "enable" : true
    },
-   "notifications" : {
-      "DoNotDisturb" : true
-   },
-   "power" : {
-      "pauseCompositorOnStandby" : false,
-      "powerOffOnExit" : false,
-      "turnOffScreensTimeout" : 300
-   },
-   "steam.app.223750" : {
-      "fovScale" : 100
-   },
-   "steam.app.3604983224" : {
-      "disableAsync" : true,
-      "motionSmoothingOverride" : 0
-   },
    "steamvr" : {
-      "allowSupersampleFiltering" : false,
-      "background" : "/home/msparks/.local/share/Steam/steamapps/common/SteamVR/resources/backgrounds/night_mountains.png",
-      "backgroundUseDomeProjection" : true,
-      "directMode" : true,
-      "doNotFadeToGrid" : true,
+      "allowDisplayLockedMode" : true,
       "enableHomeApp" : false,
-      "installID" : "17416916993889507284",
-      "lastVersionNotice" : "1.20.3",
-      "lastVersionNoticeDate" : "1633127511",
-      "mirrorViewDisplayMode" : 2,
-      "overlayRenderQuality_2" : 2,
-      "showMirrorView" : false,
-      "showPerfGraph" : true,
-      "supersampleScale" : 1.4999999999999998
-   },
-   "system.generated.x-plane-x86_64" : {
-      "disableAsync" : true,
-      "fovScale" : 100,
-      "motionSmoothingOverride" : 2,
-      "resolutionScale" : 100,
-      "worldScale" : 1
-   },
-   "userinterface" : {
-      "StatusAlwaysOnTop" : false
+      "installID" : "18313431600710331479",
+      "lastVersionNotice" : "1.24.7",
+      "lastVersionNoticeDate" : "1671820800",
+      "showAdvancedSettings" : true
    }
 }

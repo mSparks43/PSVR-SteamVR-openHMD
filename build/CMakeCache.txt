@@ -100,6 +100,9 @@ CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 //Enable/Disable output of compile commands during generation.
 CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=
 
+//Value Computed by CMake.
+CMAKE_FIND_PACKAGE_REDIRECTS_DIR:STATIC=/home/msparks/Development/PSVR-SteamVR-openHMD/build/CMakeFiles/pkgRedirects
+
 //Install path prefix, prepended onto install directories.
 CMAKE_INSTALL_PREFIX:PATH=/usr/local
 
@@ -254,6 +257,9 @@ PLUGINDIR:STRING=/home/msparks/Development/PSVR-SteamVR-openHMD/build/bin/linux6
 //Value Computed by CMake
 driver_openhmd_BINARY_DIR:STATIC=/home/msparks/Development/PSVR-SteamVR-openHMD/build
 
+//Value Computed by CMake
+driver_openhmd_IS_TOP_LEVEL:STATIC=ON
+
 //Dependencies for the target
 driver_openhmd_LIB_DEPENDS:STATIC=general;dl;general;openhmd-shared;
 
@@ -270,10 +276,16 @@ openhmd-static_LIB_DEPENDS:STATIC=general;/usr/lib64/libhidapi-libusb.so;general
 openhmd_BINARY_DIR:STATIC=/home/msparks/Development/PSVR-SteamVR-openHMD/build/subprojects/openhmd
 
 //Value Computed by CMake
+openhmd_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
 openhmd_SOURCE_DIR:STATIC=/home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd
 
 //Value Computed by CMake
 simple_BINARY_DIR:STATIC=/home/msparks/Development/PSVR-SteamVR-openHMD/build/subprojects/openhmd/examples/simple
+
+//Value Computed by CMake
+simple_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
 simple_SOURCE_DIR:STATIC=/home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/examples/simple
@@ -292,9 +304,9 @@ CMAKE_CACHEFILE_DIR:INTERNAL=/home/msparks/Development/PSVR-SteamVR-openHMD/buil
 //Major version of cmake used to create the current loaded cache
 CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 //Minor version of cmake used to create the current loaded cache
-CMAKE_CACHE_MINOR_VERSION:INTERNAL=20
+CMAKE_CACHE_MINOR_VERSION:INTERNAL=26
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=5
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=4
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.
@@ -434,4 +446,6 @@ FIND_PACKAGE_MESSAGE_DETAILS_HIDAPI:INTERNAL=[/usr/lib64/libhidapi-libusb.so][/u
 HIDAPI_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: HIDAPI_LIBRARY
 HIDAPI_LIBRARY-ADVANCED:INTERNAL=1
+//linker supports push/pop state
+_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
 

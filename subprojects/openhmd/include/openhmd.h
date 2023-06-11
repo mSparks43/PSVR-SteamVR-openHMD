@@ -203,7 +203,7 @@ typedef enum {
 typedef enum {
 	/** int[1] (set, default: 1): Set this to 0 to prevent OpenHMD from creating background threads to do automatic device ticking.
 	    Call ohmd_update(); must be called frequently, at least 10 times per second, if the background threads are disabled. */
-	OHMD_IDS_AUTOMATIC_UPDATE = 0,
+	OHMD_IDS_AUTOMATIC_UPDATE = 1,
 } ohmd_int_settings;
 
 /** Device classes. */

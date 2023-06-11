@@ -66,15 +66,24 @@ static uint32_t calc_delta_and_handle_rollover(uint32_t next, uint32_t last)
 
 	return tick_delta;
 }
-
+int i=1;
+/*static void handle_tracker_sensor_msg(psvr_priv* priv, unsigned char* buffer, int size)
+{
+	vec3f mag = {{0.0f, 0.0f, 0.0f}};
+	float dt = i* TICK_LEN;
+	i++;
+	priv->sensor.proximity=1025;
+	ofusion_update(&priv->sensor_fusion, dt, &priv->raw_gyro, &priv->raw_accel, &mag);
+}*/
 static void handle_tracker_sensor_msg(psvr_priv* priv, unsigned char* buffer, int size)
 {
-	uint32_t last_sample_tick = priv->sensor.samples[1].tick;
+	
 
 	if(!psvr_decode_sensor_packet(&priv->sensor, buffer, size)){
 		LOGE("couldn't decode tracker sensor message");
+		return;
 	}
-
+	uint32_t last_sample_tick = priv->sensor.samples[0].tick;
 	psvr_sensor_packet* s = &priv->sensor;
 
 	uint32_t tick_delta = 250;
@@ -146,6 +155,7 @@ static void handle_tracker_sensor_msg(psvr_priv* priv, unsigned char* buffer, in
 static void teardown(psvr_priv* priv)
 {
 	if (priv->hmd_handle != NULL) {
+		hid_write(priv->hmd_control, psvr_cinematicmode_on, sizeof(psvr_cinematicmode_on));
 		hid_close(priv->hmd_handle);
 		priv->hmd_handle = NULL;
 	}
@@ -154,6 +164,7 @@ static void teardown(psvr_priv* priv)
 		hid_close(priv->hmd_control);
 		priv->hmd_control = NULL;
 	}
+	free(priv);
 }
 
 static void update_device(ohmd_device* device)
@@ -202,6 +213,7 @@ static int getf(ohmd_device* device, ohmd_float_value type, float* out)
 		out[0] = (priv->buttons & PSVR_BUTTON_VOLUME_PLUS) != 0;
 		out[1] = (priv->buttons & PSVR_BUTTON_VOLUME_MINUS) != 0;
 		out[2] = (priv->buttons & PSVR_BUTTON_MIC_MUTE) != 0;
+		
 		break;
 
 	default:
@@ -224,7 +236,7 @@ static void close_device(ohmd_device* device)
 
 	teardown(priv);
 
-	free(device);
+	
 }
 
 static hid_device* open_device_idx(int manufacturer, int product, int iface, int device_index)
@@ -312,9 +324,9 @@ static ohmd_device* open_device(ohmd_driver* driver, ohmd_device_desc* desc)
     priv->base.properties.universal_distortion_k[2]= 0.75f;
     priv->base.properties.universal_distortion_k[3]= 0.0f;
 	priv->base.properties.universal_distortion_k[4]= 3.8f;*/
-	priv->base.properties.universal_aberration_k[0] = 0.999f;
+	/*priv->base.properties.universal_aberration_k[0] = 0.999f;
 	priv->base.properties.universal_aberration_k[1] = 1.008f;
-	priv->base.properties.universal_aberration_k[2] = 1.018f;
+	priv->base.properties.universal_aberration_k[2] = 1.018f;*/
 	// Set device properties TODO: Get from device
 	priv->base.properties.hsize = 0.13f;//0.126; //from calculated specs
 	priv->base.properties.vsize = 0.07f;//0.071; //from calculated specs
@@ -327,7 +339,7 @@ static ohmd_device* open_device(ohmd_driver* driver, ohmd_device_desc* desc)
 	priv->base.properties.lens_vpos =0.07f / 2.0f;// 0.0394899882f;
 
 	//priv->base.properties.fov = DEG_TO_RAD(110.57f); //DEG_TO_RAD(103.57f); //TODO: Confirm exact mesurements
-	priv->base.properties.fov = DEG_TO_RAD(115.57f); //DEG_TO_RAD(103.57f); //TODO: Confirm exact mesurements
+	priv->base.properties.fov = DEG_TO_RAD(96.00f); //DEG_TO_RAD(103.57f); //TODO: Confirm exact mesurements
 	//priv->base.properties.ratio = (1920.0f / 1080.0f) / 2.0f;
 	priv->base.properties.ratio = ((1920.0f/ 2.0f) / 1080.0f) ;
 	priv->base.properties.control_count = 3;
@@ -353,7 +365,8 @@ static ohmd_device* open_device(ohmd_driver* driver, ohmd_device_desc* desc)
 cleanup:
 	if (priv) {
 		teardown(priv);
-		free(priv);
+		//free(priv);
+
 	}
 
 	return NULL;
@@ -382,7 +395,7 @@ static void get_device_list(ohmd_driver* driver, ohmd_device_list* list)
 			desc = &list->devices[list->num_devices++];
 
 			strcpy(desc->driver, "OpenHMD Sony PSVR Driver");
-			strcpy(desc->vendor, "Sony");
+			strcpy(desc->vendor, "SNY");
 			strcpy(desc->product, "PSVR");
 
 			desc->revision = 0;
@@ -402,11 +415,17 @@ static void get_device_list(ohmd_driver* driver, ohmd_device_list* list)
 
 	hid_free_enumeration(devs);
 }
-
+static ohmd_driver* localDRV=NULL;
 static void destroy_driver(ohmd_driver* drv)
 {
+	if(localDRV==NULL)
+		return;
+	if(localDRV!=drv)
+		return;	
 	LOGD("shutting down Sony PSVR driver");
+
 	free(drv);
+	localDRV=NULL;
 }
 
 ohmd_driver* ohmd_create_psvr_drv(ohmd_context* ctx)
@@ -418,8 +437,9 @@ ohmd_driver* ohmd_create_psvr_drv(ohmd_context* ctx)
 
 	drv->get_device_list = get_device_list;
 	drv->open_device = open_device;
+	
 	drv->destroy = destroy_driver;
 	drv->ctx = ctx;
-
+	localDRV=drv;
 	return drv;
 }

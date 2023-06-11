@@ -18,6 +18,8 @@ add_library(driver_openhmd SHARED
   driverlog.cpp
   driverlog.h
   driver_openhmd.cpp
+  joystick.cpp
+	joystick.hh
 )
 target_link_libraries(driver_openhmd
   ${CMAKE_DL_LIBS}

@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/driver_openhmd.dir/driver_openhmd.cpp.o.d"
   "CMakeFiles/driver_openhmd.dir/driverlog.cpp.o"
   "CMakeFiles/driver_openhmd.dir/driverlog.cpp.o.d"
+  "CMakeFiles/driver_openhmd.dir/joystick.cpp.o"
+  "CMakeFiles/driver_openhmd.dir/joystick.cpp.o.d"
   "bin/linux64/driver_openhmd.pdb"
   "bin/linux64/driver_openhmd.so"
 )

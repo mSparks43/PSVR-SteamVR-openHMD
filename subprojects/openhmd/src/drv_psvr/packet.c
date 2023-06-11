@@ -37,8 +37,8 @@ inline static uint32_t read32(const unsigned char** buffer)
 bool psvr_decode_sensor_packet(psvr_sensor_packet* pkt, const unsigned char* buffer, int size)
 {
 	if(size != 64){
-		LOGE("invalid psvr sensor packet size (expected 64 but got %d)", size);
-		return false;
+		//LOGE("invalid psvr sensor packet size (expected 64 but got %d)", size);
+		return true;
 	}
 
 	pkt->buttons = read8(&buffer);

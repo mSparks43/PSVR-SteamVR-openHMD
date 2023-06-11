@@ -2,8 +2,8 @@ subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/openhmd.c.o: \
  /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/openhmd.c \
  /usr/include/stdc-predef.h \
  /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/openhmdi.h \
- /usr/lib/gcc/x86_64-redhat-linux/11/include/stdbool.h \
- /usr/lib/gcc/x86_64-redhat-linux/11/include/stdint.h \
+ /usr/lib/gcc/x86_64-redhat-linux/12/include/stdbool.h \
+ /usr/lib/gcc/x86_64-redhat-linux/12/include/stdint.h \
  /usr/include/stdint.h /usr/include/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/bits/wordsize.h /usr/include/bits/timesize.h \
@@ -13,8 +13,8 @@ subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/openhmd.c.o: \
  /usr/include/bits/time64.h /usr/include/bits/wchar.h \
  /usr/include/bits/stdint-intn.h /usr/include/bits/stdint-uintn.h \
  /usr/include/stdio.h \
- /usr/lib/gcc/x86_64-redhat-linux/11/include/stddef.h \
- /usr/lib/gcc/x86_64-redhat-linux/11/include/stdarg.h \
+ /usr/lib/gcc/x86_64-redhat-linux/12/include/stddef.h \
+ /usr/lib/gcc/x86_64-redhat-linux/12/include/stdarg.h \
  /usr/include/bits/types/__fpos_t.h /usr/include/bits/types/__mbstate_t.h \
  /usr/include/bits/types/__fpos64_t.h /usr/include/bits/types/__FILE.h \
  /usr/include/bits/types/FILE.h /usr/include/bits/types/struct_FILE.h \

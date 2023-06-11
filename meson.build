@@ -7,7 +7,9 @@ project(
 sources = [
 	'driverlog.cpp',
 	'driverlog.h',
-	'driver_openhmd.cpp'
+	'driver_openhmd.cpp',
+	'joystick.cpp',
+	'joystick.hh'
 ]
 
 includes = include_directories('./subprojects/openhmd/include')

@@ -22,7 +22,7 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 #include <stdio.h>
-
+#include "joystick.hh"
 using namespace vr;
 
 
@@ -71,8 +71,9 @@ void print_infoi(ohmd_device* hmd, const char* name, int len, ohmd_int_value val
 static const char * const k_pch_Sample_Section = "driver_openhmd";
 static const char * const k_pch_Sample_SecondsFromVsyncToPhotons_Float = "secondsFromVsyncToPhotons";
 static const char * const k_pch_Sample_DisplayFrequency_Float = "displayFrequency";
-
+//Joystick joystick("/dev/input/js1");
 HmdQuaternion_t identityquat{ 1, 0, 0, 0};
+
 //-----------------------------------------------------------------------------
 // Purpose:
 //-----------------------------------------------------------------------------
@@ -212,9 +213,9 @@ public:
                 vr::VRProperties()->SetStringProperty( m_ulPropertyContainer, Prop_RenderModelName_String, "oculus_cv1_controller_right");
             }
         } else {
-            vr::VRProperties()->SetStringProperty( m_ulPropertyContainer, Prop_ControllerType_String, "openhmd_controller" );
+           /* vr::VRProperties()->SetStringProperty( m_ulPropertyContainer, Prop_ControllerType_String, "openhmd_controller" );
             vr::VRProperties()->SetStringProperty( m_ulPropertyContainer, Prop_InputProfilePath_String, "{openhmd}/input/openhmd_controller_profile.json" );
-            vr::VRProperties()->SetStringProperty( m_ulPropertyContainer, Prop_RenderModelName_String, "vr_controller_vive_1_5");
+            vr::VRProperties()->SetStringProperty( m_ulPropertyContainer, Prop_RenderModelName_String, "vr_controller_vive_1_5");*/
         }
 
 
@@ -224,9 +225,9 @@ public:
         vr::VRProperties()->SetInt32Property(m_ulPropertyContainer, Prop_DeviceClass_Int32, vr::TrackedDeviceClass_Controller);
 
         // avoid "not fullscreen" warnings from vrmonitor
-        vr::VRProperties()->SetBoolProperty( m_ulPropertyContainer, Prop_IsOnDesktop_Bool, false );
+        vr::VRProperties()->SetBoolProperty( m_ulPropertyContainer, Prop_IsOnDesktop_Bool, true );
 
-	if (device_flags & OHMD_DEVICE_FLAGS_LEFT_CONTROLLER) {
+	/*if (device_flags & OHMD_DEVICE_FLAGS_LEFT_CONTROLLER) {
            DriverLog("Left Controller\n");
            vr::VRProperties()->SetInt32Property( m_ulPropertyContainer, Prop_ControllerRoleHint_Int32, TrackedControllerRole_LeftHand);
 	   // Set an initial position down and to the left, which will be
@@ -323,7 +324,7 @@ public:
           }
 
           /* We fall through here for generic buttons */
-          if (control_map != NULL) {
+          /*if (control_map != NULL) {
             if (controls_types[i] == OHMD_DIGITAL) {
               vr::VRDriverInput()->CreateBooleanComponent( m_ulPropertyContainer, control_map, m_buttons + i);
             }
@@ -335,7 +336,7 @@ public:
               vr::VRDriverInput()->CreateScalarComponent( m_ulPropertyContainer, touch_map, m_touchControls + i, VRScalarType_Absolute, analog_type);
           }
         }
-
+*/
         return VRInitError_None;
     }
 
@@ -560,7 +561,7 @@ public:
 
         m_flSecondsFromVsyncToPhotons = vr::VRSettings()->GetFloat( k_pch_Sample_Section, k_pch_Sample_SecondsFromVsyncToPhotons_Float );
         //TODO: find actual frequency somehow (from openhmd?)
-        m_flDisplayFrequency = vr::VRSettings()->GetFloat( k_pch_Sample_Section, k_pch_Sample_DisplayFrequency_Float );
+        m_flDisplayFrequency = 60;//vr::VRSettings()->GetFloat( k_pch_Sample_Section, k_pch_Sample_DisplayFrequency_Float );
 
         DriverLog( "driver_openhmd: Vendor: %s\n", m_sVendor.c_str() );
         DriverLog( "driver_openhmd: Serial Number: %s\n", m_sSerialNumber.c_str() );
@@ -595,7 +596,10 @@ public:
         vr::VRProperties()->SetFloatProperty( m_ulPropertyContainer, Prop_UserHeadToEyeDepthMeters_Float, 0.f );
         vr::VRProperties()->SetFloatProperty( m_ulPropertyContainer, Prop_DisplayFrequency_Float, m_flDisplayFrequency );
         vr::VRProperties()->SetFloatProperty( m_ulPropertyContainer, Prop_SecondsFromVsyncToPhotons_Float, m_flSecondsFromVsyncToPhotons );
-
+        vr::VRProperties()->SetBoolProperty(m_ulPropertyContainer, Prop_HasDriverDirectModeComponent_Bool, true);
+        vr::VRProperties()->SetInt32Property(m_ulPropertyContainer, Prop_EdidVendorID_Int32, 55629);
+        vr::VRProperties()->SetInt32Property(m_ulPropertyContainer, Prop_EdidProductID_Int32, 46083);
+        vr::VRProperties()->SetBoolProperty(m_ulPropertyContainer, Prop_DisplayDebugMode_Bool, true);
         //float sep;
 
         // return a constant that's not 0 (invalid) or 1 (reserved for Oculus)
@@ -638,11 +642,12 @@ public:
         *pnY = m_nWindowY;
         *pnWidth = m_nWindowWidth;
         *pnHeight = m_nWindowHeight;
+         DriverLog("GetWindowBounds %d %d %d %d\n", m_nWindowX,m_nWindowY,m_nWindowWidth,m_nWindowHeight);
     }
 
     bool IsDisplayOnDesktop()
     {
-        return true;
+        return false;
     }
 
     bool IsDisplayRealDisplay()
@@ -956,10 +961,11 @@ public:
         coordinates.rfRed[1] = tc_r[1];
         return coordinates;
     }
-
+    DriverPose_t pose = { 0 };
+    double maxH=-999999999.0;
     DriverPose_t GetPose()
     {
-        DriverPose_t pose = { 0 };
+        
         pose.poseIsValid = true;
         pose.result = TrackingResult_Running_OK;
         pose.deviceIsConnected = true;
@@ -975,9 +981,28 @@ public:
 
         float pos[3];
         ohmd_device_getf(d, OHMD_POSITION_VECTOR, pos);
-        pose.vecPosition[0] = pos[0];
-        pose.vecPosition[1] = pos[1];
-        pose.vecPosition[2] = pos[2];
+        /*JoystickEvent event;
+        if (joystick.sample(&event))
+        {
+            if(event.isAxis()&&event.number==3)
+            {
+                //printf("Axis %u is at position %d\n", event.number, event.value);
+                pose.vecPosition[2] = event.value/96000.0f;
+                if(event.value>0)
+                    pose.vecPosition[1] = -event.value/196000.0f;
+                else
+                    pose.vecPosition[1] = event.value/196000.0f;
+                double val=-event.value/196000.0f;
+                if(val>maxH)
+                    maxH=val;
+                pose.vecPosition[1] = maxH;//std::max(event.value/196000.0f,maxH);
+
+            }
+        }*/
+        
+        //pose.vecPosition[0] = pos[0];
+        //pose.vecPosition[1] = 10;//pos[1];
+        //pose.vecPosition[2] = pos[2];
 
         //printf("%f %f %f %f  %f %f %f\n", quat[0], quat[1], quat[2], quat[3], pos[0], pos[1], pos[2]);
         //fflush(stdout);
