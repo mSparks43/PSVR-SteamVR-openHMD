@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  ".0"
   "CMakeFiles/openhmd-shared.dir/src/drv_dummy/dummy.c.o"
   "CMakeFiles/openhmd-shared.dir/src/drv_dummy/dummy.c.o.d"
   "CMakeFiles/openhmd-shared.dir/src/drv_psvr/packet.c.o"

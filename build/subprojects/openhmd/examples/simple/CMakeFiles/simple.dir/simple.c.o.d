@@ -8,8 +8,8 @@ subprojects/openhmd/examples/simple/CMakeFiles/simple.dir/simple.c.o: \
  /usr/include/bits/long-double.h /usr/include/gnu/stubs.h \
  /usr/include/gnu/stubs-64.h /usr/include/stdio.h \
  /usr/include/bits/libc-header-start.h \
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stddef.h \
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdarg.h \
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stddef.h \
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdarg.h \
  /usr/include/bits/types.h /usr/include/bits/typesizes.h \
  /usr/include/bits/time64.h /usr/include/bits/types/__fpos_t.h \
  /usr/include/bits/types/__mbstate_t.h \
