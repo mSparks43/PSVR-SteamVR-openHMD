@@ -146,7 +146,7 @@ if (OPENHMD_DRIVER_ANDROID)
 endif(OPENHMD_DRIVER_ANDROID)
 
 if (OPENHMD_EXAMPLE_SIMPLE)
-	add_subdirectory(./examples/simple)
+	#add_subdirectory(./examples/simple)
 endif(OPENHMD_EXAMPLE_SIMPLE)
 
 if (OPENHMD_EXAMPLE_SDL)

@@ -1,17 +1,22 @@
 {
    "DesktopUI" : {
       "pairing" : "560,240,799,599,0",
-      "settings_desktop" : "560,336,799,599,0"
+      "settings_desktop" : "263,332,799,599,0"
    },
    "GpuSpeed" : {
-      "gpuSpeed0" : 1380,
-      "gpuSpeed1" : 1327,
-      "gpuSpeed2" : 1350,
-      "gpuSpeed3" : 1349,
-      "gpuSpeed4" : 1348,
-      "gpuSpeedCount" : 5,
-      "gpuSpeedDriver" : "2202993344",
-      "gpuSpeedHorsepower" : 1350,
+      "gpuSpeed0" : 1352,
+      "gpuSpeed1" : 1355,
+      "gpuSpeed2" : 1469,
+      "gpuSpeed3" : 1354,
+      "gpuSpeed4" : 1351,
+      "gpuSpeed5" : 1465,
+      "gpuSpeed6" : 1442,
+      "gpuSpeed7" : 1355,
+      "gpuSpeed8" : 1466,
+      "gpuSpeed9" : 1352,
+      "gpuSpeedCount" : 10,
+      "gpuSpeedDriver" : "2245361984",
+      "gpuSpeedHorsepower" : 1387,
       "gpuSpeedRenderTargetScale" : 1.5,
       "gpuSpeedVendor" : "NVIDIA GeForce RTX 3070",
       "gpuSpeedVersion" : 2
@@ -20,30 +25,35 @@
       "HMDManufacturer" : "SNY",
       "HMDModel" : "OpenHMD: PSVR"
    },
-   "driver_gamepad" : {
-      "enable" : false
+   "dashboard" : {
+      "allowAppQuitting" : false,
+      "arcadeMode" : true,
+      "enableDashboard" : false,
+      "showDesktop" : false,
+      "showPowerOptions" : false
    },
-   "driver_lighthouse" : {
+   "driver_gamepad" : {
       "enable" : false
    },
    "driver_monado" : {
       "enable" : false
    },
-   "driver_oculus" : {
-      "enable" : false
-   },
-   "driver_oculus_legacy" : {
-      "enable" : false
-   },
-   "driver_openhmd" : {
-      "enable" : true
+   "notifications" : {
+      "DoNotDisturb" : true
    },
    "steamvr" : {
       "allowDisplayLockedMode" : true,
+      "doNotFadeToGrid" : true,
       "enableHomeApp" : false,
-      "installID" : "18313431600710331479",
-      "lastVersionNotice" : "1.24.7",
-      "lastVersionNoticeDate" : "1671820800",
+      "installID" : "13373618834666764591",
+      "lastVersionNotice" : "1.26.7",
+      "lastVersionNoticeDate" : "1690912303",
       "showAdvancedSettings" : true
+   },
+   "system.generated.x-plane-x86_64" : {
+      "resolutionScale" : 80
+   },
+   "userinterface" : {
+      "StatusAlwaysOnTop" : false
    }
 }

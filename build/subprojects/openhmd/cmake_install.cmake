@@ -83,9 +83,3 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES "/home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/include/openhmd.h")
 endif()
 
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for each subdirectory.
-  include("/home/msparks/Development/PSVR-SteamVR-openHMD/build/subprojects/openhmd/examples/simple/cmake_install.cmake")
-
-endif()
-

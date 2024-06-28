@@ -64,11 +64,12 @@ bool psvr_decode_sensor_packet(psvr_sensor_packet* pkt, const unsigned char* buf
 	for(int i = 0; i < 3; i++){
 		pkt->samples[1].accel[i] = read16(&buffer);
 	}//50
+
 	buffer += 5; //unknown, skip 5
 	pkt->button_raw = read16(&buffer);
 	pkt->proximity = read16(&buffer); // ~150 (nothing) to 1023 (headset is on)
 	buffer += 6; //unknown, skip 6
 	pkt->seq = read8(&buffer);
-
-	return true;
+	//printf("gyro: %d %d %d\naccel %d %d %d\n",pkt->samples[0].gyro[0],pkt->samples[0].gyro[1],pkt->samples[0].gyro[2],pkt->samples[0].accel[0],pkt->samples[0].accel[1],pkt->samples[0].accel[2]);
+	return true; 
 }

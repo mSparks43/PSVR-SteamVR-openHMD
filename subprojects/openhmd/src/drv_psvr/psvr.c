@@ -201,7 +201,10 @@ static int getf(ohmd_device* device, ohmd_float_value type, float* out)
 		break;
 
 	case OHMD_POSITION_VECTOR:
-		out[0] = out[1] = out[2] = 0;
+		out[0] = 0;
+		out[1] = 0;
+		out[2] = 0;
+	
 		break;
 
 	case OHMD_DISTORTION_K:
@@ -339,7 +342,7 @@ static ohmd_device* open_device(ohmd_driver* driver, ohmd_device_desc* desc)
 	priv->base.properties.lens_vpos =0.07f / 2.0f;// 0.0394899882f;
 
 	//priv->base.properties.fov = DEG_TO_RAD(110.57f); //DEG_TO_RAD(103.57f); //TODO: Confirm exact mesurements
-	priv->base.properties.fov = DEG_TO_RAD(96.00f); //DEG_TO_RAD(103.57f); //TODO: Confirm exact mesurements
+	priv->base.properties.fov = DEG_TO_RAD(92.00f); //DEG_TO_RAD(103.57f); //TODO: Confirm exact mesurements 96
 	//priv->base.properties.ratio = (1920.0f / 1080.0f) / 2.0f;
 	priv->base.properties.ratio = ((1920.0f/ 2.0f) / 1080.0f) ;
 	priv->base.properties.control_count = 3;
@@ -421,7 +424,7 @@ static void destroy_driver(ohmd_driver* drv)
 	if(localDRV==NULL)
 		return;
 	if(localDRV!=drv)
-		return;	
+		free(localDRV);//return;	
 	LOGD("shutting down Sony PSVR driver");
 
 	free(drv);

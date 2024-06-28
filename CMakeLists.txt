@@ -18,6 +18,8 @@ add_library(driver_openhmd SHARED
   driverlog.cpp
   driverlog.h
   driver_openhmd.cpp
+  aitrack_udp.cpp
+  aitrack_udp.h
   joystick.cpp
 	joystick.hh
 )

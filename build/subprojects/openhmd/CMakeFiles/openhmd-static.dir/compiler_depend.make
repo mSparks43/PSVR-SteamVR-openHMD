@@ -50,10 +50,10 @@ subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/drv_dummy/dummy.c.o: /home
   /usr/include/string.h \
   /usr/include/sys/cdefs.h \
   /usr/include/wchar.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdarg.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdbool.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stddef.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdint.h
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdarg.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdbool.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stddef.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdint.h
 
 subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/drv_psvr/packet.c.o: /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/drv_psvr/packet.c \
   /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/include/openhmd.h \
@@ -104,10 +104,10 @@ subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/drv_psvr/packet.c.o: /home
   /usr/include/stdlib.h \
   /usr/include/sys/cdefs.h \
   /usr/include/wchar.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdarg.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdbool.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stddef.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdint.h
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdarg.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdbool.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stddef.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdint.h
 
 subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/drv_psvr/psvr.c.o: /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/drv_psvr/psvr.c \
   /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/include/openhmd.h \
@@ -162,12 +162,12 @@ subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/drv_psvr/psvr.c.o: /home/m
   /usr/include/string.h \
   /usr/include/sys/cdefs.h \
   /usr/include/wchar.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/limits.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdarg.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdbool.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stddef.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdint.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/syslimits.h
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/limits.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdarg.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdbool.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stddef.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdint.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/syslimits.h
 
 subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/fusion.c.o: /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/fusion.c \
   /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/include/openhmd.h \
@@ -218,10 +218,10 @@ subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/fusion.c.o: /home/msparks/
   /usr/include/string.h \
   /usr/include/sys/cdefs.h \
   /usr/include/wchar.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdarg.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdbool.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stddef.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdint.h
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdarg.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdbool.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stddef.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdint.h
 
 subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/omath.c.o: /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/omath.c \
   /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/include/openhmd.h \
@@ -272,10 +272,10 @@ subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/omath.c.o: /home/msparks/D
   /usr/include/string.h \
   /usr/include/sys/cdefs.h \
   /usr/include/wchar.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdarg.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdbool.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stddef.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdint.h
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdarg.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdbool.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stddef.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdint.h
 
 subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/openhmd.c.o: /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/openhmd.c \
   /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/include/openhmd.h \
@@ -327,10 +327,10 @@ subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/openhmd.c.o: /home/msparks
   /usr/include/string.h \
   /usr/include/sys/cdefs.h \
   /usr/include/wchar.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdarg.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdbool.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stddef.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdint.h
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdarg.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdbool.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stddef.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdint.h
 
 subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/platform-posix.c.o: /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/platform-posix.c \
   /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/include/openhmd.h \
@@ -411,10 +411,10 @@ subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/platform-posix.c.o: /home/
   /usr/include/sys/time.h \
   /usr/include/time.h \
   /usr/include/wchar.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdarg.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdbool.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stddef.h \
-  /usr/lib/gcc/x86_64-redhat-linux/12/include/stdint.h
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdarg.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdbool.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stddef.h \
+  /usr/lib/gcc/x86_64-redhat-linux/13/include/stdint.h
 
 subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/platform-win32.c.o: /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/platform-win32.c \
   /usr/include/stdc-predef.h
@@ -436,7 +436,11 @@ subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/shaders.c.o: /home/msparks
 
 /usr/include/bits/types/struct_timespec.h:
 
+/usr/include/bits/types/struct_sched_param.h:
+
 /usr/include/bits/types/struct_itimerspec.h:
+
+/usr/include/bits/types/sigset_t.h:
 
 /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/platform-win32.c:
 
@@ -462,6 +466,8 @@ subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/shaders.c.o: /home/msparks
 
 /usr/include/bits/atomic_wide_counter.h:
 
+/home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/platform-posix.c:
+
 /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/shaders.h:
 
 /usr/include/sys/time.h:
@@ -474,15 +480,11 @@ subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/shaders.c.o: /home/msparks
 
 /usr/include/bits/stdio_lim.h:
 
-/usr/lib/gcc/x86_64-redhat-linux/12/include/limits.h:
-
 /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/platform.h:
 
 /usr/include/bits/sched.h:
 
 /usr/include/bits/stdint-uintn.h:
-
-/home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/openhmdi.h:
 
 /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/drv_psvr/psvr.h:
 
@@ -522,17 +524,9 @@ subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/shaders.c.o: /home/msparks
 
 /usr/include/bits/libc-header-start.h:
 
-/home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/platform-posix.c:
-
-/usr/lib/gcc/x86_64-redhat-linux/12/include/stdarg.h:
+/usr/lib/gcc/x86_64-redhat-linux/13/include/stdarg.h:
 
 /usr/include/bits/libm-simd-decl-stubs.h:
-
-/home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/log.h:
-
-/usr/include/bits/types/struct_sched_param.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/12/include/stdbool.h:
 
 /usr/include/bits/endian.h:
 
@@ -543,10 +537,6 @@ subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/shaders.c.o: /home/msparks
 /usr/include/stdc-predef.h:
 
 /usr/include/sys/cdefs.h:
-
-/usr/include/bits/types/sigset_t.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/12/include/stdint.h:
 
 /usr/include/bits/flt-eval-method.h:
 
@@ -564,19 +554,19 @@ subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/shaders.c.o: /home/msparks
 
 /usr/include/bits/fp-fast.h:
 
-/usr/lib/gcc/x86_64-redhat-linux/12/include/syslimits.h:
-
 /usr/include/bits/math-vector.h:
 
 /usr/include/bits/types/__fpos_t.h:
 
 /usr/include/bits/wordsize.h:
 
-/usr/lib/gcc/x86_64-redhat-linux/12/include/stddef.h:
-
 /usr/include/bits/types/__mbstate_t.h:
 
 /usr/include/bits/types/struct_FILE.h:
+
+/home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/log.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/13/include/stdint.h:
 
 /usr/include/bits/cpu-set.h:
 
@@ -590,6 +580,8 @@ subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/shaders.c.o: /home/msparks
 
 /usr/include/features.h:
 
+/usr/lib/gcc/x86_64-redhat-linux/13/include/limits.h:
+
 /usr/include/gnu/stubs-64.h:
 
 /usr/include/stdint.h:
@@ -602,9 +594,15 @@ subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/shaders.c.o: /home/msparks
 
 /usr/include/wchar.h:
 
+/home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/openhmdi.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/13/include/stdbool.h:
+
 /usr/include/bits/types/__sigset_t.h:
 
 /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/drv_psvr/packet.c:
+
+/usr/lib/gcc/x86_64-redhat-linux/13/include/stddef.h:
 
 /usr/include/math.h:
 
@@ -613,6 +611,8 @@ subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/shaders.c.o: /home/msparks
 /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/drv_psvr/psvr.c:
 
 /usr/include/assert.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/13/include/syslimits.h:
 
 /usr/include/hidapi/hidapi.h:
 

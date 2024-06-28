@@ -200,18 +200,29 @@ openhmd-static/fast:
 	$(MAKE) $(MAKESILENT) -f subprojects/openhmd/CMakeFiles/openhmd-static.dir/build.make subprojects/openhmd/CMakeFiles/openhmd-static.dir/build
 .PHONY : openhmd-static/fast
 
-#=============================================================================
-# Target rules for targets named simple
+aitrack_udp.o: aitrack_udp.cpp.o
+.PHONY : aitrack_udp.o
 
-# Build rule for target.
-simple: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 simple
-.PHONY : simple
+# target to build an object file
+aitrack_udp.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/driver_openhmd.dir/build.make CMakeFiles/driver_openhmd.dir/aitrack_udp.cpp.o
+.PHONY : aitrack_udp.cpp.o
 
-# fast build rule for target.
-simple/fast:
-	$(MAKE) $(MAKESILENT) -f subprojects/openhmd/examples/simple/CMakeFiles/simple.dir/build.make subprojects/openhmd/examples/simple/CMakeFiles/simple.dir/build
-.PHONY : simple/fast
+aitrack_udp.i: aitrack_udp.cpp.i
+.PHONY : aitrack_udp.i
+
+# target to preprocess a source file
+aitrack_udp.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/driver_openhmd.dir/build.make CMakeFiles/driver_openhmd.dir/aitrack_udp.cpp.i
+.PHONY : aitrack_udp.cpp.i
+
+aitrack_udp.s: aitrack_udp.cpp.s
+.PHONY : aitrack_udp.s
+
+# target to generate assembly for a file
+aitrack_udp.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/driver_openhmd.dir/build.make CMakeFiles/driver_openhmd.dir/aitrack_udp.cpp.s
+.PHONY : aitrack_udp.cpp.s
 
 driver_openhmd.o: driver_openhmd.cpp.o
 .PHONY : driver_openhmd.o
@@ -300,7 +311,9 @@ help:
 	@echo "... driver_openhmd"
 	@echo "... openhmd-shared"
 	@echo "... openhmd-static"
-	@echo "... simple"
+	@echo "... aitrack_udp.o"
+	@echo "... aitrack_udp.i"
+	@echo "... aitrack_udp.s"
 	@echo "... driver_openhmd.o"
 	@echo "... driver_openhmd.i"
 	@echo "... driver_openhmd.s"

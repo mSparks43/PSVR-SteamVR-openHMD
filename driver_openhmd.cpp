@@ -4,7 +4,7 @@
 
 #include <openvr_driver.h>
 #include "driverlog.h"
-
+#include "aitrack_udp.h"
 #include <assert.h>
 
 #include <vector>
@@ -23,6 +23,7 @@
 #include <math.h>
 #include <stdio.h>
 #include "joystick.hh"
+
 using namespace vr;
 
 
@@ -115,7 +116,7 @@ void WatchdogThreadFunction(  )
 #else
         DriverLog("Watchdog wakeup\n");
         // for the other platforms, just send one every five seconds
-        std::this_thread::sleep_for( std::chrono::seconds( 1 ) );
+        //std::this_thread::sleep_for( std::chrono::seconds( 1 ) );
         vr::VRWatchdogHost()->WatchdogWakeUp(vr::TrackedDeviceClass_HMD);
 #endif
     }
@@ -179,6 +180,7 @@ public:
            // m_is_oculus = true;
             DriverLog("detected oculus controllers, using oculus input profile");
         }
+
     }
     virtual ~COpenHMDDeviceDriverController() {}
 
@@ -191,7 +193,7 @@ public:
           return VRInitError_Init_InterfaceNotFound;
         }
 
-        m_ulPropertyContainer = vr::VRProperties()->TrackedDeviceToPropertyContainer( m_unObjectId );
+       /* m_ulPropertyContainer = vr::VRProperties()->TrackedDeviceToPropertyContainer( m_unObjectId );
 
         const char *controllerModel = ohmd_list_gets(ctx, device_idx, OHMD_PRODUCT);
 
@@ -212,11 +214,7 @@ public:
                 // steamapps/common/SteamVR/resources/rendermodels/oculus_cv1_controller_right
                 vr::VRProperties()->SetStringProperty( m_ulPropertyContainer, Prop_RenderModelName_String, "oculus_cv1_controller_right");
             }
-        } else {
-           /* vr::VRProperties()->SetStringProperty( m_ulPropertyContainer, Prop_ControllerType_String, "openhmd_controller" );
-            vr::VRProperties()->SetStringProperty( m_ulPropertyContainer, Prop_InputProfilePath_String, "{openhmd}/input/openhmd_controller_profile.json" );
-            vr::VRProperties()->SetStringProperty( m_ulPropertyContainer, Prop_RenderModelName_String, "vr_controller_vive_1_5");*/
-        }
+        } 
 
 
         // return a constant that's not 0 (invalid) or 1 (reserved for Oculus)
@@ -225,118 +223,9 @@ public:
         vr::VRProperties()->SetInt32Property(m_ulPropertyContainer, Prop_DeviceClass_Int32, vr::TrackedDeviceClass_Controller);
 
         // avoid "not fullscreen" warnings from vrmonitor
-        vr::VRProperties()->SetBoolProperty( m_ulPropertyContainer, Prop_IsOnDesktop_Bool, true );
-
-	/*if (device_flags & OHMD_DEVICE_FLAGS_LEFT_CONTROLLER) {
-           DriverLog("Left Controller\n");
-           vr::VRProperties()->SetInt32Property( m_ulPropertyContainer, Prop_ControllerRoleHint_Int32, TrackedControllerRole_LeftHand);
-	   // Set an initial position down and to the left, which will be
-	   // used if there's no positional tracking
-	   pose.vecPosition[0] = -0.25;
-	   pose.vecPosition[1] = -5.5;
-	   pose.vecPosition[2] = 5.15;
-	} else {
-           DriverLog("Right Controller\n");
-           vr::VRProperties()->SetInt32Property( m_ulPropertyContainer, Prop_ControllerRoleHint_Int32, TrackedControllerRole_RightHand);
-	   pose.vecPosition[0] = 0.25;
-	   pose.vecPosition[1] = -5.5;
-	   pose.vecPosition[2] = 5.15;
-	}
+        vr::VRProperties()->SetBoolProperty( m_ulPropertyContainer, Prop_IsOnDesktop_Bool, true );*/
 
 
-        int control_count;
-        ohmd_device_geti(device, OHMD_CONTROL_COUNT, &control_count);
-        if (control_count > 64)
-          control_count = 64;
-
-        const char* controls_fn_str[] = { "generic", "trigger", "trigger_click", "squeeze", "menu", "home",
-                "analog-x", "analog-y", "anlog_press", "button-a", "button-b", "button-x", "button-y",
-                "volume-up", "volume-down", "mic-mute"};
-        const char* controls_type_str[] = {"digital", "analog"};
-
-        int controls_fn[64];
-        int controls_types[64];
-
-        ohmd_device_geti(device, OHMD_CONTROLS_HINTS, controls_fn);
-        ohmd_device_geti(device, OHMD_CONTROLS_TYPES, controls_types);
-
-        for(int i = 0; i < control_count; i++){
-          DriverLog("%s (%s)%s\n", controls_fn_str[controls_fn[i]], controls_type_str[controls_types[i]], i == control_count - 1 ? "" : ", ");
-          const char *control_map = NULL, *touch_map = NULL;
-          EVRScalarUnits analog_type = VRScalarUnits_NormalizedOneSided;
-
-          m_buttons[i] = k_ulInvalidInputComponentHandle;
-          m_analogControls[i] = k_ulInvalidInputComponentHandle;
-          m_touchControls[i] = k_ulInvalidInputComponentHandle;
-
-          // TODO: inputs match steamapps/common/SteamVR/drivers/oculus/resources/input/touch_profile.json
-          // but also support other controllers
-          switch (controls_fn[i]) {
-            case OHMD_GENERIC:
-              control_map = "/input/generic/click";
-              break;
-            case OHMD_TRIGGER:
-              control_map = "/input/trigger/value";
-              break;
-            case OHMD_TRIGGER_CLICK:
-              control_map = "/input/trigger/click";
-              break;
-            case OHMD_SQUEEZE:
-              control_map = "/input/grip/value";
-              break;
-            case OHMD_MENU:
-              control_map = "/input/system/click";
-              break;
-            case OHMD_HOME:
-                // TODO: this button doesn't have an input in touch_profile.json
-              control_map = "/input/system/click";
-              break;
-            case OHMD_ANALOG_X:
-              control_map = "/input/joystick/x";
-              analog_type = VRScalarUnits_NormalizedTwoSided;
-              break;
-            case OHMD_ANALOG_Y:
-              control_map = "/input/joystick/y";
-              analog_type = VRScalarUnits_NormalizedTwoSided;
-              break;
-            case OHMD_ANALOG_PRESS:
-              control_map = "/input/joystick/click";
-              break;
-            case OHMD_BUTTON_A:
-              control_map = "/input/a/click";
-              touch_map = "/input/a/touch";
-              break;
-            case OHMD_BUTTON_B:
-              control_map = "/input/b/click";
-              touch_map = "/input/b/touch";
-              break;
-            case OHMD_BUTTON_X:
-              control_map = "/input/x/click";
-              touch_map = "/input/x/touch";
-              break;
-            case OHMD_BUTTON_Y:
-              control_map = "/input/y/click";
-              touch_map = "/input/y/touch";
-              break;
-
-            default:
-              break;
-          }
-
-          /* We fall through here for generic buttons */
-          /*if (control_map != NULL) {
-            if (controls_types[i] == OHMD_DIGITAL) {
-              vr::VRDriverInput()->CreateBooleanComponent( m_ulPropertyContainer, control_map, m_buttons + i);
-            }
-            else {
-              vr::VRDriverInput()->CreateScalarComponent( m_ulPropertyContainer, control_map, m_analogControls + i, VRScalarType_Absolute, analog_type);
-            }
-          }
-	  if (touch_map != NULL) {
-              vr::VRDriverInput()->CreateScalarComponent( m_ulPropertyContainer, touch_map, m_touchControls + i, VRScalarType_Absolute, analog_type);
-          }
-        }
-*/
         return VRInitError_None;
     }
 
@@ -482,13 +371,18 @@ private:
     /* Touch controls */
     vr::VRInputComponentHandle_t m_touchControls[64]; /* Maximum components we support */
 };
+int callCount=0;
+
+AIUDP *aiTrackSRC=NULL;
 
 class COpenHMDDeviceDriver final : public vr::ITrackedDeviceServerDriver, public vr::IVRDisplayComponent
 {
+    
 public:
     COpenHMDDeviceDriver(int hmddisplay_idx, int hmdtracker_idx)
     {
         hmd = ohmd_list_open_device(ctx, hmddisplay_idx);
+        
         if (hmdtracker_idx != -1 && hmdtracker_idx != hmddisplay_idx)
 	    hmdtracker = ohmd_list_open_device(ctx, hmdtracker_idx);
 	else
@@ -575,9 +469,12 @@ public:
         float distortion_coeffs[4];
         ohmd_device_getf(hmd, OHMD_UNIVERSAL_DISTORTION_K, &(distortion_coeffs[0]));
         DriverLog("driver_openhmd: Distortion values a=%f b=%f c=%f d=%f\n", distortion_coeffs[0], distortion_coeffs[1], distortion_coeffs[2], distortion_coeffs[3]);
-
+        if(aiTrackSRC==NULL){
+            aiTrackSRC=new AIUDP();
+            aiTrackSRC->init();
+        }
 	/* Sleep for 1 second while activating to let the display connect */
-	std::this_thread::sleep_for( std::chrono::seconds(1) );
+	//std::this_thread::sleep_for( std::chrono::seconds(1) );
     }
 
     virtual ~COpenHMDDeviceDriver()
@@ -999,11 +896,11 @@ public:
 
             }
         }*/
-        
-        //pose.vecPosition[0] = pos[0];
-        //pose.vecPosition[1] = 10;//pos[1];
-        //pose.vecPosition[2] = pos[2];
-
+        std::vector<double> thisPos=aiTrackSRC->getPose();
+        pose.vecPosition[0] =thisPos[0];// 0;
+        pose.vecPosition[1] =thisPos[1];// 0;//callCount%10000/1000.0;
+        pose.vecPosition[2] =thisPos[2];// 0;
+        //callCount++;
         //printf("%f %f %f %f  %f %f %f\n", quat[0], quat[1], quat[2], quat[3], pos[0], pos[1], pos[2]);
         //fflush(stdout);
         //DriverLog("get hmd pose %f %f %f %f, %f %f %f\n", quat[0], quat[1], quat[2], quat[3], pos[0], pos[1], pos[2]);

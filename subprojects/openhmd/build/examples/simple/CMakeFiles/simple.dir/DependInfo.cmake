@@ -1,27 +1,18 @@
+
+# Consider dependencies only in project.
+set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)
+
 # The set of languages for which implicit dependencies are needed:
 set(CMAKE_DEPENDS_LANGUAGES
-  "C"
-  )
-# The set of files for implicit dependencies of each language:
-set(CMAKE_DEPENDS_CHECK_C
-  "/media/storage/openhmd/SteamVR-OpenHMD/subprojects/openhmd/examples/simple/simple.c" "/media/storage/openhmd/SteamVR-OpenHMD/subprojects/openhmd/build/examples/simple/CMakeFiles/simple.dir/simple.c.o"
-  )
-set(CMAKE_C_COMPILER_ID "GNU")
-
-# Preprocessor definitions for this target.
-set(CMAKE_TARGET_DEFINITIONS_C
-  "DRIVER_PSVR"
   )
 
-# The include file search paths:
-set(CMAKE_C_TARGET_INCLUDE_PATH
-  "../include"
-  "/usr/include/hidapi"
-  "include"
+# The set of dependency files which are needed:
+set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/examples/simple/simple.c" "examples/simple/CMakeFiles/simple.dir/simple.c.o" "gcc" "examples/simple/CMakeFiles/simple.dir/simple.c.o.d"
   )
 
-# Targets to which this target links.
-set(CMAKE_TARGET_LINKED_INFO_FILES
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_LINKED_INFO_FILES
   )
 
 # Fortran module output directory.

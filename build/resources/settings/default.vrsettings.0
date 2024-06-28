@@ -1,0 +1,8 @@
+{
+   "driver_openhmd" : {
+      "enable" : true,
+      "secondsFromVsyncToPhotons" : 0.019,
+      "displayFrequency" : 60,
+      "windowX" : 1920
+   }
+}

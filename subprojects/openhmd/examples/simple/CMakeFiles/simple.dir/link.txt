@@ -1,0 +1,1 @@
+/usr/bin/cc -std=c99 -rdynamic CMakeFiles/simple.dir/simple.c.o -o simple   -L/home/msparks/Development/PSVR-SteamVR-openHMD  -Wl,-rpath,/home/msparks/Development/PSVR-SteamVR-openHMD -lopenhmd -lm 

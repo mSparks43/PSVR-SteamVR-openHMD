@@ -51,10 +51,10 @@ subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_dummy/dummy.c.o
  /usr/include/string.h
  /usr/include/sys/cdefs.h
  /usr/include/wchar.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdarg.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdbool.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stddef.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdint.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdarg.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdbool.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stddef.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdint.h
 
 subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/packet.c.o
  /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/drv_psvr/packet.c
@@ -106,10 +106,10 @@ subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/packet.c.o
  /usr/include/stdlib.h
  /usr/include/sys/cdefs.h
  /usr/include/wchar.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdarg.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdbool.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stddef.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdint.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdarg.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdbool.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stddef.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdint.h
 
 subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/psvr.c.o
  /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/drv_psvr/psvr.c
@@ -165,12 +165,12 @@ subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/psvr.c.o
  /usr/include/string.h
  /usr/include/sys/cdefs.h
  /usr/include/wchar.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/limits.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdarg.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdbool.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stddef.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdint.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/syslimits.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/limits.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdarg.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdbool.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stddef.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdint.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/syslimits.h
 
 subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/fusion.c.o
  /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/fusion.c
@@ -222,10 +222,10 @@ subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/fusion.c.o
  /usr/include/string.h
  /usr/include/sys/cdefs.h
  /usr/include/wchar.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdarg.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdbool.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stddef.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdint.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdarg.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdbool.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stddef.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdint.h
 
 subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/omath.c.o
  /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/omath.c
@@ -277,10 +277,10 @@ subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/omath.c.o
  /usr/include/string.h
  /usr/include/sys/cdefs.h
  /usr/include/wchar.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdarg.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdbool.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stddef.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdint.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdarg.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdbool.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stddef.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdint.h
 
 subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/openhmd.c.o
  /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/openhmd.c
@@ -333,10 +333,10 @@ subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/openhmd.c.o
  /usr/include/string.h
  /usr/include/sys/cdefs.h
  /usr/include/wchar.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdarg.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdbool.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stddef.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdint.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdarg.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdbool.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stddef.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdint.h
 
 subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/platform-posix.c.o
  /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/platform-posix.c
@@ -418,10 +418,10 @@ subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/platform-posix.c.o
  /usr/include/sys/time.h
  /usr/include/time.h
  /usr/include/wchar.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdarg.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdbool.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stddef.h
- /usr/lib/gcc/x86_64-redhat-linux/12/include/stdint.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdarg.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdbool.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stddef.h
+ /usr/lib/gcc/x86_64-redhat-linux/13/include/stdint.h
 
 subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/platform-win32.c.o
  /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/platform-win32.c
