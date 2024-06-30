@@ -30,12 +30,16 @@ typedef struct {
 	int flags;
 
 	// filter queues for magnetometer, accelerometers and angular velocity
-	filter_queue mag_fq, accel_fq, ang_vel_fq;
+	filter_queue mag_fq, accel_fq, ang_vel_fq,accel_wq;
 
 	// gravity correction
 	int device_level_count;
+	int accel_level_count;
 	float grav_error_angle;
 	vec3f grav_error_axis;
+	vec3f world_pos;
+	vec3f world_accel;
+	vec3f world_vel;
 	float grav_gain; // amount of correction
 } fusion;
 

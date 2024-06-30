@@ -60,7 +60,12 @@
         "format": "cpp",
         "iomanip": "cpp",
         "span": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "time.h": "c",
+        "set": "cpp",
+        "simulation.h": "c",
+        "cmat.h": "c",
+        "vec.h": "c"
     },
     "cmake.configureOnOpen": false
 }

@@ -195,6 +195,34 @@ subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/packet.c.s: cmake
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/openhmd-shared.dir/src/drv_psvr/packet.c.s"
 	cd /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/drv_psvr/packet.c -o CMakeFiles/openhmd-shared.dir/src/drv_psvr/packet.c.s
 
+subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/Simulation.cpp.o: subprojects/openhmd/CMakeFiles/openhmd-shared.dir/flags.make
+subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/Simulation.cpp.o: subprojects/openhmd/src/drv_psvr/Simulation.cpp
+subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/Simulation.cpp.o: subprojects/openhmd/CMakeFiles/openhmd-shared.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/msparks/Development/PSVR-SteamVR-openHMD/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/Simulation.cpp.o"
+	cd /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/Simulation.cpp.o -MF CMakeFiles/openhmd-shared.dir/src/drv_psvr/Simulation.cpp.o.d -o CMakeFiles/openhmd-shared.dir/src/drv_psvr/Simulation.cpp.o -c /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/drv_psvr/Simulation.cpp
+
+subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/Simulation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/openhmd-shared.dir/src/drv_psvr/Simulation.cpp.i"
+	cd /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/drv_psvr/Simulation.cpp > CMakeFiles/openhmd-shared.dir/src/drv_psvr/Simulation.cpp.i
+
+subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/Simulation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/openhmd-shared.dir/src/drv_psvr/Simulation.cpp.s"
+	cd /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/drv_psvr/Simulation.cpp -o CMakeFiles/openhmd-shared.dir/src/drv_psvr/Simulation.cpp.s
+
+subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/scppnt/scppnt_error.cpp.o: subprojects/openhmd/CMakeFiles/openhmd-shared.dir/flags.make
+subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/scppnt/scppnt_error.cpp.o: subprojects/openhmd/src/drv_psvr/scppnt/scppnt_error.cpp
+subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/scppnt/scppnt_error.cpp.o: subprojects/openhmd/CMakeFiles/openhmd-shared.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/msparks/Development/PSVR-SteamVR-openHMD/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/scppnt/scppnt_error.cpp.o"
+	cd /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/scppnt/scppnt_error.cpp.o -MF CMakeFiles/openhmd-shared.dir/src/drv_psvr/scppnt/scppnt_error.cpp.o.d -o CMakeFiles/openhmd-shared.dir/src/drv_psvr/scppnt/scppnt_error.cpp.o -c /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/drv_psvr/scppnt/scppnt_error.cpp
+
+subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/scppnt/scppnt_error.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/openhmd-shared.dir/src/drv_psvr/scppnt/scppnt_error.cpp.i"
+	cd /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/drv_psvr/scppnt/scppnt_error.cpp > CMakeFiles/openhmd-shared.dir/src/drv_psvr/scppnt/scppnt_error.cpp.i
+
+subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/scppnt/scppnt_error.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/openhmd-shared.dir/src/drv_psvr/scppnt/scppnt_error.cpp.s"
+	cd /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd/src/drv_psvr/scppnt/scppnt_error.cpp -o CMakeFiles/openhmd-shared.dir/src/drv_psvr/scppnt/scppnt_error.cpp.s
+
 # Object files for target openhmd-shared
 openhmd__shared_OBJECTS = \
 "CMakeFiles/openhmd-shared.dir/src/openhmd.c.o" \
@@ -205,7 +233,9 @@ openhmd__shared_OBJECTS = \
 "CMakeFiles/openhmd-shared.dir/src/fusion.c.o" \
 "CMakeFiles/openhmd-shared.dir/src/shaders.c.o" \
 "CMakeFiles/openhmd-shared.dir/src/drv_psvr/psvr.c.o" \
-"CMakeFiles/openhmd-shared.dir/src/drv_psvr/packet.c.o"
+"CMakeFiles/openhmd-shared.dir/src/drv_psvr/packet.c.o" \
+"CMakeFiles/openhmd-shared.dir/src/drv_psvr/Simulation.cpp.o" \
+"CMakeFiles/openhmd-shared.dir/src/drv_psvr/scppnt/scppnt_error.cpp.o"
 
 # External object files for target openhmd-shared
 openhmd__shared_EXTERNAL_OBJECTS =
@@ -219,10 +249,12 @@ subprojects/openhmd/libopenhmd.so.0.1.0: subprojects/openhmd/CMakeFiles/openhmd-
 subprojects/openhmd/libopenhmd.so.0.1.0: subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/shaders.c.o
 subprojects/openhmd/libopenhmd.so.0.1.0: subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/psvr.c.o
 subprojects/openhmd/libopenhmd.so.0.1.0: subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/packet.c.o
+subprojects/openhmd/libopenhmd.so.0.1.0: subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/Simulation.cpp.o
+subprojects/openhmd/libopenhmd.so.0.1.0: subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/scppnt/scppnt_error.cpp.o
 subprojects/openhmd/libopenhmd.so.0.1.0: subprojects/openhmd/CMakeFiles/openhmd-shared.dir/build.make
 subprojects/openhmd/libopenhmd.so.0.1.0: /usr/lib64/libhidapi-libusb.so
 subprojects/openhmd/libopenhmd.so.0.1.0: subprojects/openhmd/CMakeFiles/openhmd-shared.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/msparks/Development/PSVR-SteamVR-openHMD/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C shared library libopenhmd.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/msparks/Development/PSVR-SteamVR-openHMD/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX shared library libopenhmd.so"
 	cd /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/openhmd-shared.dir/link.txt --verbose=$(VERBOSE)
 	cd /home/msparks/Development/PSVR-SteamVR-openHMD/subprojects/openhmd && $(CMAKE_COMMAND) -E cmake_symlink_library libopenhmd.so.0.1.0 libopenhmd.so.0 libopenhmd.so
 

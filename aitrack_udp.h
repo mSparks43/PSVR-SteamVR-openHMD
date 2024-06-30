@@ -23,7 +23,7 @@ private:
     socklen_t len;
     struct sockaddr_in servaddr;
     bool run;
-    bool hadData;
+    
     bool inited;
     std::mutex data_mutex;
     std::vector<std::thread> some_threads;
@@ -34,5 +34,6 @@ public:
     void finish();
     void start();
     std::vector<double> getPose();
+    bool hadData;
 }; 
 #endif // AIUDP_H

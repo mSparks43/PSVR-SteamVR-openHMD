@@ -1,10 +1,14 @@
 file(REMOVE_RECURSE
   "CMakeFiles/openhmd-static.dir/src/drv_dummy/dummy.c.o"
   "CMakeFiles/openhmd-static.dir/src/drv_dummy/dummy.c.o.d"
+  "CMakeFiles/openhmd-static.dir/src/drv_psvr/Simulation.cpp.o"
+  "CMakeFiles/openhmd-static.dir/src/drv_psvr/Simulation.cpp.o.d"
   "CMakeFiles/openhmd-static.dir/src/drv_psvr/packet.c.o"
   "CMakeFiles/openhmd-static.dir/src/drv_psvr/packet.c.o.d"
   "CMakeFiles/openhmd-static.dir/src/drv_psvr/psvr.c.o"
   "CMakeFiles/openhmd-static.dir/src/drv_psvr/psvr.c.o.d"
+  "CMakeFiles/openhmd-static.dir/src/drv_psvr/scppnt/scppnt_error.cpp.o"
+  "CMakeFiles/openhmd-static.dir/src/drv_psvr/scppnt/scppnt_error.cpp.o.d"
   "CMakeFiles/openhmd-static.dir/src/fusion.c.o"
   "CMakeFiles/openhmd-static.dir/src/fusion.c.o.d"
   "CMakeFiles/openhmd-static.dir/src/omath.c.o"
@@ -22,6 +26,6 @@ file(REMOVE_RECURSE
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang C)
+foreach(lang C CXX)
   include(CMakeFiles/openhmd-static.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()

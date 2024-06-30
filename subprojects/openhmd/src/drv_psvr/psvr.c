@@ -23,9 +23,10 @@
 #include <limits.h>
 #include <stdint.h>
 #include <stdbool.h>
-
+#include <math.h>
 #include "psvr.h"
-
+#include "Simulation.h"
+#include <time.h>
 typedef struct {
 	ohmd_device base;
 
@@ -41,9 +42,9 @@ typedef struct {
 
 static void accel_from_psvr_vec(const int16_t* smp, vec3f* out_vec)
 {
-	out_vec->x = (float)smp[1] *  (9.81 / 16384);
-	out_vec->y = (float)smp[0] *  (9.81 / 16384);
-	out_vec->z = (float)smp[2] * -(9.81 / 16384);
+	out_vec->x = (float)smp[1] *  (10.0 / 16384);
+	out_vec->y = (float)smp[0] *  (10.0 / 16384);
+	out_vec->z = (float)smp[2] * -(10.0 / 16384);
 }
 
 static void gyro_from_psvr_vec(const int16_t* smp, vec3f* out_vec)
@@ -75,6 +76,7 @@ int i=1;
 	priv->sensor.proximity=1025;
 	ofusion_update(&priv->sensor_fusion, dt, &priv->raw_gyro, &priv->raw_accel, &mag);
 }*/
+
 static void handle_tracker_sensor_msg(psvr_priv* priv, unsigned char* buffer, int size)
 {
 	
@@ -87,7 +89,11 @@ static void handle_tracker_sensor_msg(psvr_priv* priv, unsigned char* buffer, in
 	psvr_sensor_packet* s = &priv->sensor;
 
 	uint32_t tick_delta = 250;
-
+	//if(start>-1){
+	//	time_t milliseconds;
+	//	milliseconds = clock();
+	//	printf("%d %f\n", (milliseconds-start),priv->raw_gyro.y);
+	//}
 	// Startup correction, ignore last_sample_tick if zero.
 	if (last_sample_tick > 0) {
 		tick_delta = calc_delta_and_handle_rollover(
@@ -112,7 +118,11 @@ static void handle_tracker_sensor_msg(psvr_priv* priv, unsigned char* buffer, in
 		float dt = tick_delta * TICK_LEN;
 		accel_from_psvr_vec(s->samples[i].accel, &priv->raw_accel);
 		gyro_from_psvr_vec(s->samples[i].gyro, &priv->raw_gyro);
+		//printf("%f ",priv->raw_gyro.y);
 		priv->raw_gyro.y-=(float)(last_sample_tick)*0.0000000007f;
+		
+		//priv->raw_gyro.y-=(float)(last_sample_tick)*0.00000007f;
+		//printf("%f\n",priv->raw_gyro.y);
 		ofusion_update(&priv->sensor_fusion, dt, &priv->raw_gyro, &priv->raw_accel, &mag);
 
 		if (i == 0) {
@@ -122,6 +132,8 @@ static void handle_tracker_sensor_msg(psvr_priv* priv, unsigned char* buffer, in
 	}
 
 	priv->buttons = s->buttons;
+	//if(start<0)
+	//	start = clock();
 }
 
 /*static void handle_tracker_sensor_msg(psvr_priv* priv, unsigned char* buffer, int size)
@@ -201,9 +213,15 @@ static int getf(ohmd_device* device, ohmd_float_value type, float* out)
 		break;
 
 	case OHMD_POSITION_VECTOR:
-		out[0] = 0;
-		out[1] = 0;
-		out[2] = 0;
+		float thispos[3];
+		thispos[0] = fmax(fmin(priv->sensor_fusion.world_pos.x/400.0,1),-1);
+		thispos[1] = fmax(fmin(priv->sensor_fusion.world_pos.y/400.0,1),-1);
+		thispos[2] = fmax(fmin(priv->sensor_fusion.world_pos.z/400.0,1),-1);
+	    pos_sim_run(&(thispos[0]),out);
+
+		/*out[0] = fmax(fmin(priv->sensor_fusion.world_pos.x/150.0,1),-1);
+		out[1] = fmax(fmin(priv->sensor_fusion.world_pos.y/150.0,1),-1);
+		out[2] = fmax(fmin(priv->sensor_fusion.world_pos.z/150.0,1),-1);*/
 	
 		break;
 
@@ -315,7 +333,7 @@ static ohmd_device* open_device(ohmd_driver* driver, ohmd_device_desc* desc)
 		ohmd_set_error(driver->ctx, "failed to write to device (set VR mode)");
 		goto cleanup;
 	}
-
+	pos_sim_init(0.05);
 	// Set default device properties
 	ohmd_set_default_device_properties(&priv->base.properties);
 	priv->base.properties.universal_distortion_k[0]= 0.200000;
@@ -367,7 +385,7 @@ static ohmd_device* open_device(ohmd_driver* driver, ohmd_device_desc* desc)
 
 cleanup:
 	if (priv) {
-		teardown(priv);
+		//teardown(priv);
 		//free(priv);
 
 	}

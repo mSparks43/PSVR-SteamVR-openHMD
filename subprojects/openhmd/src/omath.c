@@ -28,7 +28,11 @@ void ovec3f_normalize_me(vec3f* me)
 	me->y /= len;
 	me->z /= len;
 }
-
+void ovec3f_add(const vec3f* a, const vec3f* b, vec3f* out)
+{
+	for(int i = 0; i < 3; i++)
+		out->arr[i] = a->arr[i] + b->arr[i];
+}
 void ovec3f_subtract(const vec3f* a, const vec3f* b, vec3f* out)
 {
 	for(int i = 0; i < 3; i++)

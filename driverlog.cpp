@@ -37,12 +37,12 @@ static void DriverLogVarArgs( const char *pMsgFormat, va_list args )
 
 void DriverLog( const char *pMsgFormat, ... )
 {
-	va_list args;
+	/*va_list args;
 	va_start( args, pMsgFormat );
 
 	DriverLogVarArgs( pMsgFormat, args );
 
-	va_end(args);
+	va_end(args);*/
 }
 
 

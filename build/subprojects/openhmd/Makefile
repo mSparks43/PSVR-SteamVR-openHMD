@@ -216,6 +216,33 @@ src/drv_dummy/dummy.c.s:
 	cd /home/msparks/Development/PSVR-SteamVR-openHMD/build && $(MAKE) $(MAKESILENT) -f subprojects/openhmd/CMakeFiles/openhmd-static.dir/build.make subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/drv_dummy/dummy.c.s
 .PHONY : src/drv_dummy/dummy.c.s
 
+src/drv_psvr/Simulation.o: src/drv_psvr/Simulation.cpp.o
+.PHONY : src/drv_psvr/Simulation.o
+
+# target to build an object file
+src/drv_psvr/Simulation.cpp.o:
+	cd /home/msparks/Development/PSVR-SteamVR-openHMD/build && $(MAKE) $(MAKESILENT) -f subprojects/openhmd/CMakeFiles/openhmd-shared.dir/build.make subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/Simulation.cpp.o
+	cd /home/msparks/Development/PSVR-SteamVR-openHMD/build && $(MAKE) $(MAKESILENT) -f subprojects/openhmd/CMakeFiles/openhmd-static.dir/build.make subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/drv_psvr/Simulation.cpp.o
+.PHONY : src/drv_psvr/Simulation.cpp.o
+
+src/drv_psvr/Simulation.i: src/drv_psvr/Simulation.cpp.i
+.PHONY : src/drv_psvr/Simulation.i
+
+# target to preprocess a source file
+src/drv_psvr/Simulation.cpp.i:
+	cd /home/msparks/Development/PSVR-SteamVR-openHMD/build && $(MAKE) $(MAKESILENT) -f subprojects/openhmd/CMakeFiles/openhmd-shared.dir/build.make subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/Simulation.cpp.i
+	cd /home/msparks/Development/PSVR-SteamVR-openHMD/build && $(MAKE) $(MAKESILENT) -f subprojects/openhmd/CMakeFiles/openhmd-static.dir/build.make subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/drv_psvr/Simulation.cpp.i
+.PHONY : src/drv_psvr/Simulation.cpp.i
+
+src/drv_psvr/Simulation.s: src/drv_psvr/Simulation.cpp.s
+.PHONY : src/drv_psvr/Simulation.s
+
+# target to generate assembly for a file
+src/drv_psvr/Simulation.cpp.s:
+	cd /home/msparks/Development/PSVR-SteamVR-openHMD/build && $(MAKE) $(MAKESILENT) -f subprojects/openhmd/CMakeFiles/openhmd-shared.dir/build.make subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/Simulation.cpp.s
+	cd /home/msparks/Development/PSVR-SteamVR-openHMD/build && $(MAKE) $(MAKESILENT) -f subprojects/openhmd/CMakeFiles/openhmd-static.dir/build.make subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/drv_psvr/Simulation.cpp.s
+.PHONY : src/drv_psvr/Simulation.cpp.s
+
 src/drv_psvr/packet.o: src/drv_psvr/packet.c.o
 .PHONY : src/drv_psvr/packet.o
 
@@ -269,6 +296,33 @@ src/drv_psvr/psvr.c.s:
 	cd /home/msparks/Development/PSVR-SteamVR-openHMD/build && $(MAKE) $(MAKESILENT) -f subprojects/openhmd/CMakeFiles/openhmd-shared.dir/build.make subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/psvr.c.s
 	cd /home/msparks/Development/PSVR-SteamVR-openHMD/build && $(MAKE) $(MAKESILENT) -f subprojects/openhmd/CMakeFiles/openhmd-static.dir/build.make subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/drv_psvr/psvr.c.s
 .PHONY : src/drv_psvr/psvr.c.s
+
+src/drv_psvr/scppnt/scppnt_error.o: src/drv_psvr/scppnt/scppnt_error.cpp.o
+.PHONY : src/drv_psvr/scppnt/scppnt_error.o
+
+# target to build an object file
+src/drv_psvr/scppnt/scppnt_error.cpp.o:
+	cd /home/msparks/Development/PSVR-SteamVR-openHMD/build && $(MAKE) $(MAKESILENT) -f subprojects/openhmd/CMakeFiles/openhmd-shared.dir/build.make subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/scppnt/scppnt_error.cpp.o
+	cd /home/msparks/Development/PSVR-SteamVR-openHMD/build && $(MAKE) $(MAKESILENT) -f subprojects/openhmd/CMakeFiles/openhmd-static.dir/build.make subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/drv_psvr/scppnt/scppnt_error.cpp.o
+.PHONY : src/drv_psvr/scppnt/scppnt_error.cpp.o
+
+src/drv_psvr/scppnt/scppnt_error.i: src/drv_psvr/scppnt/scppnt_error.cpp.i
+.PHONY : src/drv_psvr/scppnt/scppnt_error.i
+
+# target to preprocess a source file
+src/drv_psvr/scppnt/scppnt_error.cpp.i:
+	cd /home/msparks/Development/PSVR-SteamVR-openHMD/build && $(MAKE) $(MAKESILENT) -f subprojects/openhmd/CMakeFiles/openhmd-shared.dir/build.make subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/scppnt/scppnt_error.cpp.i
+	cd /home/msparks/Development/PSVR-SteamVR-openHMD/build && $(MAKE) $(MAKESILENT) -f subprojects/openhmd/CMakeFiles/openhmd-static.dir/build.make subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/drv_psvr/scppnt/scppnt_error.cpp.i
+.PHONY : src/drv_psvr/scppnt/scppnt_error.cpp.i
+
+src/drv_psvr/scppnt/scppnt_error.s: src/drv_psvr/scppnt/scppnt_error.cpp.s
+.PHONY : src/drv_psvr/scppnt/scppnt_error.s
+
+# target to generate assembly for a file
+src/drv_psvr/scppnt/scppnt_error.cpp.s:
+	cd /home/msparks/Development/PSVR-SteamVR-openHMD/build && $(MAKE) $(MAKESILENT) -f subprojects/openhmd/CMakeFiles/openhmd-shared.dir/build.make subprojects/openhmd/CMakeFiles/openhmd-shared.dir/src/drv_psvr/scppnt/scppnt_error.cpp.s
+	cd /home/msparks/Development/PSVR-SteamVR-openHMD/build && $(MAKE) $(MAKESILENT) -f subprojects/openhmd/CMakeFiles/openhmd-static.dir/build.make subprojects/openhmd/CMakeFiles/openhmd-static.dir/src/drv_psvr/scppnt/scppnt_error.cpp.s
+.PHONY : src/drv_psvr/scppnt/scppnt_error.cpp.s
 
 src/fusion.o: src/fusion.c.o
 .PHONY : src/fusion.o
@@ -449,12 +503,18 @@ help:
 	@echo "... src/drv_dummy/dummy.o"
 	@echo "... src/drv_dummy/dummy.i"
 	@echo "... src/drv_dummy/dummy.s"
+	@echo "... src/drv_psvr/Simulation.o"
+	@echo "... src/drv_psvr/Simulation.i"
+	@echo "... src/drv_psvr/Simulation.s"
 	@echo "... src/drv_psvr/packet.o"
 	@echo "... src/drv_psvr/packet.i"
 	@echo "... src/drv_psvr/packet.s"
 	@echo "... src/drv_psvr/psvr.o"
 	@echo "... src/drv_psvr/psvr.i"
 	@echo "... src/drv_psvr/psvr.s"
+	@echo "... src/drv_psvr/scppnt/scppnt_error.o"
+	@echo "... src/drv_psvr/scppnt/scppnt_error.i"
+	@echo "... src/drv_psvr/scppnt/scppnt_error.s"
 	@echo "... src/fusion.o"
 	@echo "... src/fusion.i"
 	@echo "... src/fusion.s"

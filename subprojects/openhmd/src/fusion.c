@@ -10,7 +10,7 @@
 
 #include <string.h>
 #include "openhmdi.h"
-
+#include <time.h>
 void ofusion_init(fusion* me)
 {
 	memset(me, 0, sizeof(fusion));
@@ -18,6 +18,7 @@ void ofusion_init(fusion* me)
 
 	ofq_init(&me->mag_fq, 20);
 	ofq_init(&me->accel_fq, 20);
+	ofq_init(&me->accel_wq, 3);
 	ofq_init(&me->ang_vel_fq, 20);
 
 	me->flags = FF_USE_GRAVITY;
@@ -32,14 +33,19 @@ void ofusion_update(fusion* me, float dt, const vec3f* ang_vel, const vec3f* acc
 
 	me->mag = *mag;
 
-	vec3f world_accel;
+	vec3f world_accel,world_ref_accel;;
 	oquatf_get_rotated(&me->orient, accel, &world_accel);
 
 	me->iterations += 1;
 	me->time += dt;
-
+	vec3f down = {{0, 10.0f, 0}};
 	ofq_add(&me->mag_fq, mag);
+	
 	ofq_add(&me->accel_fq, &world_accel);
+	vec3f accel_mean;
+	ofq_get_mean(&me->accel_fq, &accel_mean);
+	ovec3f_subtract(&accel_mean,&world_accel,&world_ref_accel);
+	ofq_add(&me->accel_wq, &world_ref_accel);
 	ofq_add(&me->ang_vel_fq, ang_vel);
 
 	float ang_vel_length = ovec3f_get_length(ang_vel);
@@ -49,11 +55,12 @@ void ofusion_update(fusion* me, float dt, const vec3f* ang_vel, const vec3f* acc
 			{{ ang_vel->x / ang_vel_length, ang_vel->y / ang_vel_length, ang_vel->z / ang_vel_length }};
 
 		float rot_angle = ang_vel_length * dt;
-
+		
 		quatf delta_orient;
 		oquatf_init_axis(&delta_orient, &rot_axis, rot_angle);
 
 		oquatf_mult_me(&me->orient, &delta_orient);
+		
 	}
 
 	// gravity correction
@@ -65,18 +72,68 @@ void ofusion_update(fusion* me, float dt, const vec3f* ang_vel, const vec3f* acc
 		// otherwise reset the counter and start over
 
 		me->device_level_count =
-			fabsf(ovec3f_get_length(accel) - 9.82f) < gravity_tolerance * 2.0f && ang_vel_length < ang_vel_tolerance
+			fabsf(ovec3f_get_length(accel) - 10.0f) < gravity_tolerance * 2.0f && ang_vel_length < ang_vel_tolerance
 			? me->device_level_count + 1 : 0;
-
+		me->accel_level_count =
+			fabsf(ovec3f_get_length(accel) - 10.0f) > gravity_tolerance/2.0f	? me->accel_level_count + 1 : 0;
 		// device has been level for long enough, grab mean from the accelerometer filter queue (last n values)
 		// and use for correction
-
+		
+		
+		
+		ofq_get_mean(&me->accel_wq, &accel_mean);
+		double t_accel=ovec3f_get_length(&accel_mean);
+		if (fabsf(t_accel)>0.00005){
+			
+			//if(me->accel_level_count > 1){
+				//printf("%f\n",t_accel);
+				//ovec3f_add(&me->world_accel,&accel_mean,&me->world_accel);
+				vec3f inc={{(accel_mean.x*20),(accel_mean.y*20),(accel_mean.z*20)}};
+				vec3f z={{(0),(0),(0)}};
+				ovec3f_add(&z,&inc,&me->world_accel);
+			//}
+			
+		}else{
+			//vec3f dec={{-(me->world_accel.x)/2000,-(me->world_accel.y)/2000,-(me->world_accel.z)/2000}};
+			//ovec3f_add(&me->world_accel,&dec,&me->world_accel);
+			me->accel_level_count = 0;
+			/*me->world_accel.x-=(me->world_accel.x)/10000;
+			me->world_accel.y-=(me->world_accel.y)/10000;
+			me->world_accel.z-=(me->world_accel.z)/10000;*/
+			me->world_accel.x=0;
+			me->world_accel.y=0;
+			me->world_accel.z=0;
+			
+		}
+		//printf("%f %f %f\n",me->world_pos.x,me->world_pos.y,me->world_pos.z);
+		//printf("%f %f %f\n",me->world_accel.x,me->world_accel.y,me->world_accel.z);
+		t_accel=ovec3f_get_length(&me->world_vel);
+		//printf("%f\n",t_accel);
+		if(t_accel<0.1){
+			me->world_pos.x-=(me->world_pos.x)/2000;
+			me->world_pos.y-=(me->world_pos.y)/2000;
+			me->world_pos.z-=(me->world_pos.z)/2000;
+		}
+		//me->world_accel.x-=(me->world_accel.x)/1000;
+		//me->world_accel.y-=(me->world_accel.y)/1000;
+		//me->world_accel.z-=(me->world_accel.z)/1000;
+		//increment
+		me->world_vel.x+=me->world_accel.x/1000;
+		me->world_vel.y+=me->world_accel.y/1000;
+		me->world_vel.z+=me->world_accel.z/1000;
+		//reduce velocity
+		me->world_vel.x-=me->world_vel.x/5000;
+		me->world_vel.y-=me->world_vel.y/5000;
+		me->world_vel.z-=me->world_vel.z/5000;
+		//move by velocity
+		me->world_pos.x+=me->world_vel.x;
+		me->world_pos.y+=me->world_vel.y;
+		me->world_pos.z+=me->world_vel.z;
 		if(me->device_level_count > 50){
 			me->device_level_count = 0;
-
-			vec3f accel_mean;
+			//vec3f accel_mean;
 			ofq_get_mean(&me->accel_fq, &accel_mean);
-			if (ovec3f_get_length(&accel_mean) - 9.82f < gravity_tolerance)
+			if (ovec3f_get_length(&accel_mean) - 10.0f < gravity_tolerance)
 			{
 				// Calculate a cross product between what the device
 				// thinks is up and what gravity indicates is down.
@@ -86,8 +143,8 @@ void ofusion_update(fusion* me, float dt, const vec3f* ang_vel, const vec3f* acc
 
 				ovec3f_normalize_me(&tilt);
 				ovec3f_normalize_me(&accel_mean);
-
 				vec3f up = {{0, 1.0f, 0}};
+				
 				float tilt_angle = ovec3f_get_angle(&up, &accel_mean);
 
 				if(tilt_angle > max_tilt_error){
@@ -123,5 +180,13 @@ void ofusion_update(fusion* me, float dt, const vec3f* ang_vel, const vec3f* acc
 
 	// mitigate drift due to floating point
 	// inprecision with quat multiplication.
+	
+	
 	oquatf_normalize_me(&me->orient);
+	/*vec3f out;
+	vec3f rot={0,0,1};
+	oquatf_get_rotated(&me->orient, &rot, &out);
+	double angle=atan(out.z/out.x)*57.2958;
+	printf("%f %f %f %f\n",angle,out.x,out.y,out.z);*/
+			
 }

@@ -280,7 +280,7 @@ public:
 		float pos[3];
 		ohmd_device_getf(device, OHMD_POSITION_VECTOR, pos);
 		pose.vecPosition[0] = pos[0];
-		pose.vecPosition[1] = -5.5;//pos[1];
+		pose.vecPosition[1] = 5.5;//pos[1];
 		pose.vecPosition[2] = pos[2];
 	}
 
@@ -860,6 +860,8 @@ public:
     }
     DriverPose_t pose = { 0 };
     double maxH=-999999999.0;
+    
+    //double start = -1;
     DriverPose_t GetPose()
     {
         
@@ -871,13 +873,13 @@ public:
 
         float quat[4];
         ohmd_device_getf(d, OHMD_ROTATION_QUAT, quat);
+        //auto now = std::chrono::high_resolution_clock::now();
         pose.qRotation.x = quat[0];
         pose.qRotation.y = quat[1];
         pose.qRotation.z = quat[2];
         pose.qRotation.w = quat[3];
-
-        float pos[3];
-        ohmd_device_getf(d, OHMD_POSITION_VECTOR, pos);
+        //printf("%f %f %f %f\n",pose.qRotation.x,pose.qRotation.y,pose.qRotation.z,pose.qRotation.w );
+        
         /*JoystickEvent event;
         if (joystick.sample(&event))
         {
@@ -896,10 +898,19 @@ public:
 
             }
         }*/
-        std::vector<double> thisPos=aiTrackSRC->getPose();
-        pose.vecPosition[0] =thisPos[0];// 0;
-        pose.vecPosition[1] =thisPos[1];// 0;//callCount%10000/1000.0;
-        pose.vecPosition[2] =thisPos[2];// 0;
+       if(aiTrackSRC->hadData){
+            std::vector<double> thisPos=aiTrackSRC->getPose();
+            pose.vecPosition[0] =thisPos[0];// 0;
+            pose.vecPosition[1] =thisPos[1];// 0;//callCount%10000/1000.0;
+            pose.vecPosition[2] =thisPos[2];// 0;
+       }
+       else{
+            float pos[3];
+            ohmd_device_getf(d, OHMD_POSITION_VECTOR, pos);
+            pose.vecPosition[0] =pos[0];// 0;
+            pose.vecPosition[1] =pos[1]+1.5;// 0;//callCount%10000/1000.0;
+            pose.vecPosition[2] =pos[2];// 0;
+       }
         //callCount++;
         //printf("%f %f %f %f  %f %f %f\n", quat[0], quat[1], quat[2], quat[3], pos[0], pos[1], pos[2]);
         //fflush(stdout);

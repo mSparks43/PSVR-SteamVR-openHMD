@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 2.8)
 
 project(openhmd C CXX)
-set(CMAKE_C_FLAGS "-std=c99")
+set(CMAKE_C_FLAGS "-std=c++11")
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 
 set(LIB_VERSION_MAJOR 0)
@@ -85,10 +87,14 @@ if(OPENHMD_DRIVER_PSVR)
 	set(openhmd_source_files ${openhmd_source_files}
 	${CMAKE_CURRENT_LIST_DIR}/src/drv_psvr/psvr.c
 	${CMAKE_CURRENT_LIST_DIR}/src/drv_psvr/packet.c
+	${CMAKE_CURRENT_LIST_DIR}/src/drv_psvr/Simulation.cpp 
+	${CMAKE_CURRENT_LIST_DIR}/src/drv_psvr/scppnt/scppnt_error.cpp 
 	)
+	
 	add_definitions(-DDRIVER_PSVR)
 
 	find_package(HIDAPI REQUIRED)
+	
 	include_directories(${HIDAPI_INCLUDE_DIRS})
 	set(LIBS ${LIBS} ${HIDAPI_LIBRARIES})
 endif(OPENHMD_DRIVER_PSVR)
