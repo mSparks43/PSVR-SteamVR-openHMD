@@ -65,7 +65,7 @@ void ofusion_update(fusion* me, float dt, const vec3f* ang_vel, const vec3f* acc
 
 	// gravity correction
 	if(me->flags & FF_USE_GRAVITY){
-		const float gravity_tolerance = .4f, ang_vel_tolerance = .1f;
+		const float gravity_tolerance = .2f, ang_vel_tolerance = .1f;
 		const float min_tilt_error = 0.05f, max_tilt_error = 0.01f;
 
 		// if the device is within tolerance levels, count this as the device is level and add to the counter
@@ -83,27 +83,18 @@ void ofusion_update(fusion* me, float dt, const vec3f* ang_vel, const vec3f* acc
 		
 		ofq_get_mean(&me->accel_wq, &accel_mean);
 		double t_accel=ovec3f_get_length(&accel_mean);
-		if (fabsf(t_accel)>0.00005){
-			
-			//if(me->accel_level_count > 1){
-				//printf("%f\n",t_accel);
-				//ovec3f_add(&me->world_accel,&accel_mean,&me->world_accel);
-				vec3f inc={{(accel_mean.x*20),(accel_mean.y*20),(accel_mean.z*20)}};
-				vec3f z={{(0),(0),(0)}};
-				ovec3f_add(&z,&inc,&me->world_accel);
-			//}
-			
+		if (fabsf(t_accel)>0.00005 && me->accel_level_count > 0 ){
+			me->accel_level_count =1;
+			vec3f inc={{(accel_mean.x*20),(accel_mean.y*20),(accel_mean.z*20)}};
+			vec3f z={{(0),(0),(0)}};
+			ovec3f_add(&z,&inc,&me->world_accel);
 		}else{
-			//vec3f dec={{-(me->world_accel.x)/2000,-(me->world_accel.y)/2000,-(me->world_accel.z)/2000}};
-			//ovec3f_add(&me->world_accel,&dec,&me->world_accel);
-			me->accel_level_count = 0;
-			/*me->world_accel.x-=(me->world_accel.x)/10000;
-			me->world_accel.y-=(me->world_accel.y)/10000;
-			me->world_accel.z-=(me->world_accel.z)/10000;*/
 			me->world_accel.x=0;
 			me->world_accel.y=0;
 			me->world_accel.z=0;
-			
+			me->world_vel.x=0;
+			me->world_vel.y=0;
+			me->world_vel.z=0;
 		}
 		//printf("%f %f %f\n",me->world_pos.x,me->world_pos.y,me->world_pos.z);
 		//printf("%f %f %f\n",me->world_accel.x,me->world_accel.y,me->world_accel.z);
@@ -114,9 +105,7 @@ void ofusion_update(fusion* me, float dt, const vec3f* ang_vel, const vec3f* acc
 			me->world_pos.y-=(me->world_pos.y)/2000;
 			me->world_pos.z-=(me->world_pos.z)/2000;
 		}
-		//me->world_accel.x-=(me->world_accel.x)/1000;
-		//me->world_accel.y-=(me->world_accel.y)/1000;
-		//me->world_accel.z-=(me->world_accel.z)/1000;
+
 		//increment
 		me->world_vel.x+=me->world_accel.x/1000;
 		me->world_vel.y+=me->world_accel.y/1000;
@@ -129,7 +118,7 @@ void ofusion_update(fusion* me, float dt, const vec3f* ang_vel, const vec3f* acc
 		me->world_pos.x+=me->world_vel.x;
 		me->world_pos.y+=me->world_vel.y;
 		me->world_pos.z+=me->world_vel.z;
-		if(me->device_level_count > 50){
+		if(me->device_level_count > 50 && t_accel<0.1){
 			me->device_level_count = 0;
 			//vec3f accel_mean;
 			ofq_get_mean(&me->accel_fq, &accel_mean);
@@ -148,6 +137,8 @@ void ofusion_update(fusion* me, float dt, const vec3f* ang_vel, const vec3f* acc
 				float tilt_angle = ovec3f_get_angle(&up, &accel_mean);
 
 				if(tilt_angle > max_tilt_error){
+					//printf("pause 6dof for the recalibration\n");
+					me->accel_level_count=-50;//pause 6dof for the recalibration
 					me->grav_error_angle = tilt_angle;
 					me->grav_error_axis = tilt;
 				}
