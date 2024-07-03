@@ -18,13 +18,51 @@ void ofusion_init(fusion* me)
 
 	ofq_init(&me->mag_fq, 20);
 	ofq_init(&me->accel_fq, 20);
-	ofq_init(&me->accel_wq, 3);
+	ofq_init(&me->accel_wq, 1);
 	ofq_init(&me->ang_vel_fq, 20);
 
 	me->flags = FF_USE_GRAVITY;
 	me->grav_gain = 0.05f;
 }
 
+void get_world_ref_accel(fusion* me,vec3f* world_accel,const vec3f* accel,float dt){
+	vec3f world_ref_accel,world_ref_accel2;
+	vec3f accel_mean;
+	ofq_get_mean(&me->accel_fq, &accel_mean);
+	
+	
+	vec3f thisAccel = {{-accel->x,accel->y , -accel->z}};
+	//ovec3f_normalize_me(&world_accel);
+	//ovec3f_subtract(&accel_mean,&world_accel,&world_ref_accel);
+	oquatf_get_rotated(&me->orient, accel, &world_ref_accel2);
+	ovec3f_subtract(&world_ref_accel2,&accel_mean,&world_ref_accel);
+	//printf("%f\n",(now-grav));
+	//printf("%f\t%f\t%f\n",world_ref_accel2.x, world_ref_accel2.y, world_ref_accel2.z);
+	//printf("%f\t%f\t%f\n",world_ref_accel.x, world_ref_accel.y, world_ref_accel.z);
+	//printf("%f\t%f\t%f - \t%f - \t%f\t%f\t%f\n",world_ref_accel.x, world_ref_accel.y, world_ref_accel.z,0.0,accel->x,accel->y, accel->z);
+	
+	ofq_add(&me->accel_wq, &world_ref_accel);
+
+}
+/*void get_world_ref_accel_old(fusion* me,vec3f* world_accel,const vec3f* accel){
+	vec3f world_ref_accel,world_ref_accel2;
+	vec3f accel_mean;
+	ofq_get_mean(&me->accel_fq, &accel_mean);
+	float grav = fabsf(ovec3f_get_length(&accel_mean));
+	ovec3f_normalize_me(&accel_mean);
+	float now = fabsf(ovec3f_get_length(world_accel));
+	vec3f down = {{accel_mean.x*grav, accel_mean.y*grav, accel_mean.z*grav}};
+	oquatf_normalize_me(&me->orient);
+	oquatf_get_rotated(&me->orient, &down, &world_ref_accel2);
+	vec3f thisAccel = {{accel->x,accel->y , accel->z}};
+	//ovec3f_normalize_me(&world_accel);
+	//ovec3f_subtract(&accel_mean,&world_accel,&world_ref_accel);
+	ovec3f_subtract(&thisAccel,&world_ref_accel2,&world_ref_accel);
+	//printf("%f\t%f\t%f\n",world_ref_accel2.x, world_ref_accel2.y, world_ref_accel2.z);
+	//printf("%f\t%f\t%f\n",world_ref_accel.x, world_ref_accel.y, world_ref_accel.z);
+	printf("%f\t%f\t%f\t%f\t%f\t%f\t%f\n",world_ref_accel.x, world_ref_accel.y, world_ref_accel.z, (now-grav),accel->x,accel->y, accel->z);
+	ofq_add(&me->accel_wq, &world_ref_accel);
+}*/
 void ofusion_update(fusion* me, float dt, const vec3f* ang_vel, const vec3f* accel, const vec3f* mag)
 {
 	me->ang_vel = *ang_vel;
@@ -33,19 +71,22 @@ void ofusion_update(fusion* me, float dt, const vec3f* ang_vel, const vec3f* acc
 
 	me->mag = *mag;
 
-	vec3f world_accel,world_ref_accel;;
+	vec3f world_accel;
+	
 	oquatf_get_rotated(&me->orient, accel, &world_accel);
 
 	me->iterations += 1;
 	me->time += dt;
-	vec3f down = {{0, 10.0f, 0}};
-	ofq_add(&me->mag_fq, mag);
 	
+	//ovec3f_subtract(&world_accel,&down,&world_ref_accel2);
+	//printf("%f %f %f \t %f %f %f\n",accel->x,accel->y,accel->z,world_ref_accel2.x,world_ref_accel2.y,world_ref_accel2.z);
+	ofq_add(&me->mag_fq, mag);
+	//if(abs(ovec3f_get_length(&world_accel)- 10.0f<.4f))
 	ofq_add(&me->accel_fq, &world_accel);
-	vec3f accel_mean;
-	ofq_get_mean(&me->accel_fq, &accel_mean);
-	ovec3f_subtract(&accel_mean,&world_accel,&world_ref_accel);
-	ofq_add(&me->accel_wq, &world_ref_accel);
+	//else
+	//	ofq_add(&me->accel_fq, &world_ref_accel2);
+	get_world_ref_accel(me,&world_accel,accel,dt);
+	
 	ofq_add(&me->ang_vel_fq, ang_vel);
 
 	float ang_vel_length = ovec3f_get_length(ang_vel);
@@ -80,12 +121,12 @@ void ofusion_update(fusion* me, float dt, const vec3f* ang_vel, const vec3f* acc
 		// and use for correction
 		
 		
-		
+		vec3f accel_mean;
 		ofq_get_mean(&me->accel_wq, &accel_mean);
 		double t_accel=ovec3f_get_length(&accel_mean);
 		if (fabsf(t_accel)>0.00005 && me->accel_level_count > 0 ){
 			me->accel_level_count =1;
-			vec3f inc={{(accel_mean.x*20),(accel_mean.y*20),(accel_mean.z*20)}};
+			vec3f inc={{(accel_mean.x*30),(accel_mean.y*10),(accel_mean.z*30)}};
 			vec3f z={{(0),(0),(0)}};
 			ovec3f_add(&z,&inc,&me->world_accel);
 		}else{

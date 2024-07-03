@@ -214,9 +214,9 @@ static int getf(ohmd_device* device, ohmd_float_value type, float* out)
 
 	case OHMD_POSITION_VECTOR:
 		float thispos[3];
-		thispos[0] = fmax(fmin(priv->sensor_fusion.world_pos.x/700.0,1),-1);
-		thispos[1] = fmax(fmin(priv->sensor_fusion.world_pos.y/700.0,1),-1);
-		thispos[2] = fmax(fmin(priv->sensor_fusion.world_pos.z/700.0,1),-1);
+		thispos[0] = fmax(fmin(priv->sensor_fusion.world_pos.x/700.0,0.5),-0.5);
+		thispos[1] = fmax(fmin(priv->sensor_fusion.world_pos.y/700.0,0.5),-0.5);
+		thispos[2] = fmax(fmin(priv->sensor_fusion.world_pos.z/700.0,0.5),-0.5);
 	    pos_sim_run(&(thispos[0]),out);
 
 		/*out[0] = fmax(fmin(priv->sensor_fusion.world_pos.x/150.0,1),-1);
