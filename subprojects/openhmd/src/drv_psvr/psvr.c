@@ -119,6 +119,7 @@ static void handle_tracker_sensor_msg(psvr_priv* priv, unsigned char* buffer, in
 		accel_from_psvr_vec(s->samples[i].accel, &priv->raw_accel);
 		gyro_from_psvr_vec(s->samples[i].gyro, &priv->raw_gyro);
 		//printf("%f ",priv->raw_gyro.y);
+		//printf("tick %d \n",s->samples[i].tick);
 		priv->raw_gyro.y-=(float)(last_sample_tick)*0.0000000007f;
 		
 		//priv->raw_gyro.y-=(float)(last_sample_tick)*0.00000007f;
@@ -333,7 +334,7 @@ static ohmd_device* open_device(ohmd_driver* driver, ohmd_device_desc* desc)
 		ohmd_set_error(driver->ctx, "failed to write to device (set VR mode)");
 		goto cleanup;
 	}
-	pos_sim_init(0.007);
+	pos_sim_init(1);
 	// Set default device properties
 	ohmd_set_default_device_properties(&priv->base.properties);
 	priv->base.properties.universal_distortion_k[0]= 0.200000;

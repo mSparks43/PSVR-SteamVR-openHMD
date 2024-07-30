@@ -38,7 +38,7 @@ bool psvr_decode_sensor_packet(psvr_sensor_packet* pkt, const unsigned char* buf
 {
 	if(size != 64){
 		//LOGE("invalid psvr sensor packet size (expected 64 but got %d)", size);
-		return true;
+		return false;
 	}
 
 	pkt->buttons = read8(&buffer);
